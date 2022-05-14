@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home" >
         <activity
-            android:name=".ui.RegisterActivity"
+            android:name=".view.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".view.login.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
