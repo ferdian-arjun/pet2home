@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui
+package com.capstone.pet2home.view.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import com.capstone.pet2home.databinding.ActivityLoginBinding
 import com.capstone.pet2home.emailFormat
+import com.capstone.pet2home.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
