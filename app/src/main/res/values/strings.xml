@@ -10,4 +10,8 @@
     <string name="don_t_have_an_account">don\'t have an account ?</string>
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account ?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_lens">Lens</string>
+    <string name="title_profile">Profile</string>
 </resources>
