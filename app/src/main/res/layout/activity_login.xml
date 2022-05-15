@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.login.LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <com.example.storyapp.customview.MyEditTextEmail
         android:id="@+id/edt_email"
