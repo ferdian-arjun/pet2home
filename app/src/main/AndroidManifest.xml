@@ -10,9 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home">
         <activity
+            android:name=".ui.settings.changepassword.ChangePasswordActivity"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.editprofile.EditProfileActivity"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,13 +31,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.capstone.pet2home.ui.register.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.pet2home.ui.login.LoginActivity"
-            android:exported="false">
-
-        </activity>
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

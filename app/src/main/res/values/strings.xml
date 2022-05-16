@@ -14,4 +14,79 @@
     <string name="title_home">Home</string>
     <string name="title_lens">Lens</string>
     <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="user_avatar">user_avatar</string>
+    <string name="user_email">marilnwatkns@gmail.com</string>
+    <string name="user_fullName">Marilyn Watkins</string>
+    <string name="text_posting">Posting</string>
+    <string name="default_number">0</string>
+    <string name="default_text">-</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_post">Post</string>
+    <string name="tab_text_favorite">Favorite</string>
+    <string name="text_post_title">Title</string>
+    <string name="text_post_location">Location</string>
+    <string name="share_profile">Share profile</string>
+    <string name="settings_profile">Settings profile</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_change_password">Ubah Password</string>
+    <string name="text_change_language">Ubah Bahasa</string>
+    <string name="text_logout">Logout</string>
+
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Static Data-->
+    <string-array name="data_post_title">
+        <item>Title one</item>
+        <item>Title two</item>
+        <item>Title three</item>
+        <item>Title one</item>
+        <item>Title two</item>
+        <item>Title three</item>
+        <item>Title one</item>
+        <item>Title two</item>
+        <item>Title three</item>
+        <item>Title one</item>
+        <item>Title two</item>
+        <item>Title three</item>
+    </string-array>
+
+    <string-array name="data_post_location">
+        <item>3 Km</item>
+        <item>2 Km</item>
+        <item>1 Km</item>
+        <item>3 Km</item>
+        <item>2 Km</item>
+        <item>1 Km</item>
+        <item>3 Km</item>
+        <item>2 Km</item>
+        <item>1 Km</item>
+        <item>3 Km</item>
+        <item>2 Km</item>
+        <item>1 Km</item>
+    </string-array>
+
+    <integer-array name="data_post_image">
+        <item>@drawable/example1</item>
+        <item>@drawable/example2</item>
+        <item>@drawable/example3</item>
+        <item>@drawable/example1</item>
+        <item>@drawable/example2</item>
+        <item>@drawable/example3</item>
+        <item>@drawable/example1</item>
+        <item>@drawable/example2</item>
+        <item>@drawable/example3</item>
+        <item>@drawable/example1</item>
+        <item>@drawable/example2</item>
+        <item>@drawable/example3</item>
+    </integer-array>
 </resources>
+
+
