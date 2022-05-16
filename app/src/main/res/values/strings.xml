@@ -14,4 +14,38 @@
     <string name="title_home">Home</string>
     <string name="title_lens">Lens</string>
     <string name="title_profile">Profile</string>
+    <string name="user_avatar">user_avatar</string>
+    <string name="user_email">marilnwatkns@gmail.com</string>
+    <string name="user_fullName">Marilyn Watkins</string>
+    <string name="text_posting">Posting</string>
+    <string name="default_number">0</string>
+    <string name="default_text">-</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_post">Post</string>
+    <string name="tab_text_favorite">Favorite</string>
+    <string name="text_post_title">Title</string>
+    <string name="text_post_location">Location</string>
+    <string name="share_profile">Share profile</string>
+    <string name="settings_profile">Settings profile</string>
+
+
+    <!--Static Data-->
+    <string-array name="data_post_title">
+        <item>Title one</item>
+        <item>Title two</item>
+        <item>Title three</item>
+    </string-array>
+
+    <string-array name="data_post_location">
+        <item>3 Km</item>
+        <item>2 Km</item>
+        <item>1 Km</item>
+    </string-array>
+
+    <integer-array name="data_post_image">
+        <item>@drawable/example1</item>
+        <item>@drawable/example2</item>
+        <item>@drawable/example3</item>
+    </integer-array>
 </resources>
