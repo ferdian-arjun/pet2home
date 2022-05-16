@@ -15,4 +15,5 @@
         <item name="fontFamily">@font/inter</item>
         <item name="android:textViewStyle">@font/inter_regular</item>
     </style>
+
 </resources>

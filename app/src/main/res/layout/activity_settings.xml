@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
+    tools:context=".ui.settings.SettingsActivity"
+    android:orientation="vertical"
+    android:gravity="top"
+    tools:ignore="ScrollViewCount">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:layout_marginBottom="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/text_edit_profile"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/vi_edit_profile"
+                    app:layout_constraintEnd_toStartOf="@+id/vi_edit_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vi_edit_profile" />
+
+                <View
+                    android:id="@+id/vi_edit_profile"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="24dp"
+                    android:background="@drawable/ic_arrow_forward_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:layout_marginBottom="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_change_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/text_change_password"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/vi_change_password"
+                    app:layout_constraintEnd_toStartOf="@+id/vi_change_password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vi_change_password" />
+
+                <View
+                    android:id="@+id/vi_change_password"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="24dp"
+                    android:background="@drawable/ic_arrow_forward_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="@string/text_logout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="bold" />
+</LinearLayout >

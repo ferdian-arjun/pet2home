@@ -1,5 +1,6 @@
 package com.capstone.pet2home.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.TypedValue
@@ -13,15 +14,13 @@ import androidx.viewpager2.widget.ViewPager2
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.FragmentProfileBinding
 import com.capstone.pet2home.ui.profile.adapter.ProfileSectionsPagerAdapter
+import com.capstone.pet2home.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
 
@@ -79,7 +78,8 @@ class ProfileFragment : Fragment() {
                 true
             }
             R.id.menu_settings -> {
-                Toast.makeText(context , "To Settings" , Toast.LENGTH_SHORT).show()
+                val i = Intent(activity, SettingsActivity::class.java)
+                startActivity(i)
                 true
             }
             else -> false
