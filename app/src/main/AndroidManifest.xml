@@ -10,26 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home">
         <activity
-            android:name=".ui.settings.changepassword.ChangePasswordActivity"
-            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:name=".ui.onboardingpage.OnBoardingPage"
             android:exported="false" />
         <activity
-            android:name=".ui.settings.editprofile.EditProfileActivity"
-            android:parentActivityName=".ui.settings.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.settings.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/title_activity_main">
+            android:name=".ui.splashscreen.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.settings.changepassword.ChangePasswordActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.settings.SettingsActivity" />
+        <activity
+            android:name=".ui.settings.editprofile.EditProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.settings.SettingsActivity" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"/>
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
