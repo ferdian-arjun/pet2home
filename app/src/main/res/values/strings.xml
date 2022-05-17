@@ -35,6 +35,16 @@
     <string name="text_change_password">Ubah Password</string>
     <string name="text_change_language">Ubah Bahasa</string>
     <string name="text_logout">Logout</string>
+    <string name="title_menu_1">Informasi Adopsi</string>
+    <string name="desc_menu_1">Mencari berbagai informasi mengenai hewan yang available untuk diadopsi</string>
+    <string name="title_menu_2">Identiffikasi hewan</string>
+    <string name="title_menu_3">Informasi Lainnya.</string>
+    <string name="desc_menu_2">Identifikasi hewan kalian untuk mengetahui jenis ras yang ada pada hewanmu</string>
+    <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
+    <string name="menu1">Menu</string>
+    <string name="menu2">Menu2</string>
+    <string name="menu3">Menu3</string>
+    <string name="iconpet2home">IconPet2Home</string>
 
 
     <style name="TabLayoutTextStyle">
