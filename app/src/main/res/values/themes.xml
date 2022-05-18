@@ -16,4 +16,31 @@
         <item name="android:textViewStyle">@font/inter_regular</item>
     </style>
 
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="android:textColorHintInverse">?attr/colorPrimary</item>
+        <item name="prefixTextColor">?attr/colorPrimary</item>
+        <item name="helperTextTextColor">@color/red</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="errorEnabled">true</item>
+    </style>
+    <style name="TextInputLayoutStyleDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="android:textColorHintInverse">?attr/colorPrimary</item>
+        <item name="prefixTextColor">?attr/colorPrimary</item>
+        <item name="helperTextTextColor">@color/red</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
 </resources>
