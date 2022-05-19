@@ -9,7 +9,8 @@
     <item
         android:id="@+id/navigation_lens"
         android:icon="@drawable/lens"
-        android:title="@string/title_lens" />
+        android:title="@string/title_lens"
+        android:onClick="onLens"/>
 
     <item
         android:id="@+id/navigation_profile"
