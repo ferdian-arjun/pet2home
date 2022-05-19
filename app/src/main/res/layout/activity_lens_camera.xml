@@ -48,7 +48,6 @@
         android:contentDescription="@string/switchcamera"
         android:background="@drawable/bg_dark_transparent"
         android:src="@drawable/ic_switch_camera"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
