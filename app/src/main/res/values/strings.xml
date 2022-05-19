@@ -53,6 +53,9 @@
     <string name="text_change_photo_profile">Change Photo</string>
     <string name="title_post_add">Create</string>
     <string name="title_post_edit">Edit</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="choose">Choose</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.capstone.pet2home.MainActivity
 import com.capstone.pet2home.databinding.ActivitySplashScreenBinding
 import com.capstone.pet2home.ui.onboardingpage.OnBoardingPage
 
