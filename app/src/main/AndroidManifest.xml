@@ -20,9 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home">
         <activity
-
             android:name=".ui.camera.CameraActivity"
-
+            android:exported="false"/>
+        <activity
             android:name=".ui.lens.LensActivity"
             android:exported="false" />
         <activity
