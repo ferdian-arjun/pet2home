@@ -5,8 +5,12 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+
 
     <application
         android:allowBackup="true"
@@ -16,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home">
         <activity
+
+            android:name=".ui.camera.CameraActivity"
+
             android:name=".ui.lens.LensActivity"
             android:exported="false" />
         <activity
@@ -50,7 +57,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:label="@string/title_activity_main"/>
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />

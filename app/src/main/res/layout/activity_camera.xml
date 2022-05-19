@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.camera.LensCameraActivity">
+    tools:context=".ui.camera.CameraActivity">
 
     <androidx.camera.view.PreviewView
         android:id="@+id/viewCamera"
@@ -15,22 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:layout_margin="12dp"
-        android:background="@drawable/bg_dark_transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_24" />
-
     <ImageView
-        android:id="@+id/captureImage"
+        android:id="@+id/captureCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="41dp"
         android:src="@drawable/capture_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,21 +30,12 @@
 
     <ImageView
         android:id="@+id/switchCamera"
-
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/ic_cameraswitch"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:padding="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:contentDescription="@string/switchcamera"
-        android:background="@drawable/bg_dark_transparent"
-        android:src="@drawable/ic_switch_camera"
-
+        android:src="@drawable/ic_cameraswitch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
