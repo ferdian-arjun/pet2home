@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.FragmentProfileBinding
+import com.capstone.pet2home.ui.postadd.PostAddActivity
 import com.capstone.pet2home.ui.profile.adapter.ProfileSectionsPagerAdapter
 import com.capstone.pet2home.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
@@ -52,7 +53,9 @@ class ProfileFragment : Fragment() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
-        //supportActionBar?.elevation = 0f
+        binding.fabCreatePost.setOnClickListener {
+            startActivity(Intent(context, PostAddActivity::class.java))
+        }
 
         return root
     }

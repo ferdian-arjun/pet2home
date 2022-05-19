@@ -45,9 +45,14 @@
     <string name="menu2">Menu2</string>
     <string name="menu3">Menu3</string>
     <string name="iconpet2home">IconPet2Home</string>
+
     <string name="capturimage">capturImage</string>
     <string name="switchcamera">SwitchCamera</string>
 
+
+    <string name="text_change_photo_profile">Change Photo</string>
+    <string name="title_post_add">Create</string>
+    <string name="title_post_edit">Edit</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
@@ -99,6 +104,7 @@
         <item>@drawable/example2</item>
         <item>@drawable/example3</item>
     </integer-array>
+
 </resources>
 
 

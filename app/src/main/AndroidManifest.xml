@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home">
         <activity
+            android:name=".ui.postadd.PostAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.onboardingpage.OnBoardingPage"
             android:exported="false" />
         <activity
