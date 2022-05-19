@@ -45,6 +45,8 @@
     <string name="menu2">Menu2</string>
     <string name="menu3">Menu3</string>
     <string name="iconpet2home">IconPet2Home</string>
+    <string name="capturimage">capturImage</string>
+    <string name="switchcamera">SwitchCamera</string>
 
 
     <style name="TabLayoutTextStyle">
