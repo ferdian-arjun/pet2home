@@ -55,6 +55,11 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
 
+    // Requeired Library Dexter
+    implementation "com.karumi:dexter:6.2.3"
+    implementation("io.coil-kt:coil:1.1.1")
+    implementation "com.github.MikeOrtiz:TouchImageView:1.4.1"
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

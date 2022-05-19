@@ -1,7 +1,12 @@
 package com.capstone.pet2home.ui.camera
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -11,6 +16,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.capstone.pet2home.createFile
 import com.capstone.pet2home.databinding.ActivityLensCameraBinding
+import com.capstone.pet2home.ui.lens.LensActivity
 import java.lang.Exception
 
 class LensCameraActivity : AppCompatActivity() {
@@ -24,18 +30,26 @@ class LensCameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLensCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        buttonListener()
+
+        binding.btnBack.setOnClickListener{
+            finish()
+        }
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        hideSystemUI()
+        startCamera()
     }
 
     private fun buttonListener(){
+        binding.captureImage.setOnClickListener{ takePhoto() }
         binding.switchCamera.setOnClickListener{
-            cameraSelector = if (cameraSelector.equals(CameraSelector.DEFAULT_BACK_CAMERA)) CameraSelector.DEFAULT_FRONT_CAMERA
+            cameraSelector = if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) CameraSelector.DEFAULT_FRONT_CAMERA
             else CameraSelector.DEFAULT_BACK_CAMERA
 
             startCamera()
-        }
-
-        binding.captureImage.setOnClickListener{
-            takePhoto()
         }
     }
 
@@ -59,7 +73,7 @@ class LensCameraActivity : AppCompatActivity() {
                     imageCapture
                 )
             }catch (exc: Exception){
-                Toast.makeText(this, "Gagal memunculkan kamera.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "error : ${exc.message}.", Toast.LENGTH_SHORT).show()
             }
         }, ContextCompat.getMainExecutor(this))
     }
@@ -76,22 +90,37 @@ class LensCameraActivity : AppCompatActivity() {
                 override fun onError(exc: ImageCaptureException) {
                     Toast.makeText(
                         this@LensCameraActivity,
-                        "Gagal mengambil gambar.",
+                        "${exc.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    //val intent = Intent()
-                    //intent.putExtra("picture", photoFile)
-                    //intent.putExtra("isBackCamera", cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
+                    val intent = Intent(this@LensCameraActivity, LensActivity::class.java)
+                    intent.putExtra("picture", photoFile)
+                    intent.putExtra("isBackCamera", cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
+                    startActivity(intent)
+
+                    val savedUri = Uri.fromFile(photoFile)
                     Toast.makeText(
                         this@LensCameraActivity,
-                        "Berhasil mengambil gambar.",
-                        Toast.LENGTH_SHORT
+                        "Photo Saved $savedUri",
+                        Toast.LENGTH_LONG
                     ).show()
                 }
             }
         )
+    }
 
+    private fun hideSystemUI() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
     }
 }
