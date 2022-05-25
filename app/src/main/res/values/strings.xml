@@ -56,6 +56,11 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="choose">Choose</string>
+    <string name="search_post">search_post</string>
+    <string name="text_dog">Dog</string>
+    <string name="text_cat">Cat</string>
+    <string name="text_around_you">Around you</string>
+    <string name="text_search">Search</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
