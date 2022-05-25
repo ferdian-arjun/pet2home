@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.capstone.pet2home.databinding.FragmentHomeBinding
 import com.capstone.pet2home.helper.MarginItemDecoration
 import com.capstone.pet2home.model.Post
 import com.capstone.pet2home.ui.home.adapter.ListPostAdapter
+import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 
@@ -45,7 +47,13 @@ class HomeFragment : Fragment() {
 
     private fun buttonSearch() {
        binding.btnSearch.setOnClickListener {
-           Toast.makeText(context,"Fitur Search belum tersedia!",Toast.LENGTH_SHORT).show();
+           val mSearchFragment = SearchFragment()
+           val mFragmentManager = parentFragmentManager
+           mFragmentManager.beginTransaction().apply {
+               add(R.id.nav_host_fragment_activity_main, mSearchFragment, SearchFragment::class.java.simpleName)
+               addToBackStack(null)
+               commit()
+           }
        }
     }
 
