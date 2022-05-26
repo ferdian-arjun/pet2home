@@ -56,6 +56,13 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="choose">Choose</string>
+
+    <string name="posting">Posting</string>
+    <string name="name_pet">Nama Hewan</string>
+    <string name="animal_type">Jenis Hewan</string>
+    <string name="no_whatsapp">Nomer WhatsApp</string>
+    <string name="description">Deskripsi</string>
+
     <string name="search_post">search_post</string>
     <string name="text_dog">Dog</string>
     <string name="text_cat">Cat</string>
