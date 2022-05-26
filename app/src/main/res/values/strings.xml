@@ -56,6 +56,11 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="choose">Choose</string>
+    <string name="posting">Posting</string>
+    <string name="name_pet">Nama Hewan</string>
+    <string name="animal_type">Jenis Hewan</string>
+    <string name="no_whatsapp">Nomer WhatsApp</string>
+    <string name="description">Deskripsi</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
