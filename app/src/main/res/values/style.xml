@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TextInput Style -->
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="android:textColorHintInverse">?attr/colorPrimary</item>
+        <item name="prefixTextColor">?attr/colorPrimary</item>
+        <item name="helperTextTextColor">@color/red</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="errorEnabled">true</item>
+    </style>
+    <style name="TextInputLayoutStyleDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="expandedHintEnabled">true</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="colorControlNormal">@color/red</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="android:textColorHintInverse">?attr/colorPrimary</item>
+        <item name="prefixTextColor">?attr/colorPrimary</item>
+        <item name="helperTextTextColor">@color/red</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="ButtonOutlinedIcon" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="elevation">12dp</item>
+        <item name="cornerSize">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Button</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@null</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+</resources>
