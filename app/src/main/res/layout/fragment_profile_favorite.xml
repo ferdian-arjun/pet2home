@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="content fav" />
+        android:text="@string/content_fav" />
 
 </FrameLayout>
