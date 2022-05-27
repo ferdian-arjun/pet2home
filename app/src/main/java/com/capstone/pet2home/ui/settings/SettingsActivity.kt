@@ -17,6 +17,8 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.apply {
             setTitle(R.string.title_settings)
@@ -29,11 +31,12 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun buttonListener(){
         binding.cvLanguage.setOnClickListener{
-            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(intent)
         }
 
         binding.cvEditProfile.setOnClickListener{
-            val intent = Intent(this, EditProfileActivity::class.java,)
+            val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
         }
 
@@ -45,7 +48,6 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            finish()
             return true
         }
         return super.onContextItemSelected(item)
