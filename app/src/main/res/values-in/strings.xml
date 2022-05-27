@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pet2home</string>
+    <string name="login">Masuk</string>
+    <string name="email_warning">Tolong Masukkan Email dengan benar</string>
+    <string name="password_warning">Password harus mengandung 6 karakter</string>
+    <string name="name_warning">Nama tidak bolek kosong</string>
+    <string name="input_email">Masukkan Email…</string>
+    <string name="input_password">Masukkan Password…</string>
+    <string name="input_name">Masukkan nama kamu…</string>
+    <string name="don_t_have_an_account">Tidak punya akun ?</string>
+    <string name="register">Daftar</string>
+    <string name="already_have_an_account">Sudah mempunyai akun ?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_lens">Lens</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_change_password">Ganti Password</string>
+    <string name="user_avatar">user_avatar</string>
+    <string name="user_email">marilnwatkns@gmail.com</string>
+    <string name="user_fullName">Marilyn Watkins</string>
+    <string name="text_posting">Posting</string>
+    <string name="default_number">0</string>
+    <string name="default_text">-</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_post">Post</string>
+    <string name="tab_text_favorite">Favorite</string>
+    <string name="text_post_title">Title</string>
+    <string name="text_post_location">Location</string>
+    <string name="share_profile">Share profile</string>
+    <string name="settings_profile">Settings profile</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_change_password">Ubah Password</string>
+    <string name="text_change_language">Ubah Bahasa</string>
+    <string name="text_logout">Logout</string>
+    <string name="title_menu_1">Informasi Adopsi</string>
+    <string name="desc_menu_1">Mencari berbagai informasi mengenai hewan yang available untuk diadopsi</string>
+    <string name="title_menu_2">Identiffikasi hewan</string>
+    <string name="title_menu_3">Informasi Lainnya.</string>
+    <string name="desc_menu_2">Identifikasi hewan kalian untuk mengetahui jenis ras yang ada pada hewanmu</string>
+    <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
+    <string name="menu1">Menu</string>
+    <string name="menu2">Menu2</string>
+    <string name="menu3">Menu3</string>
+    <string name="iconpet2home">IconPet2Home</string>
+
+    <string name="capturimage">capturImage</string>
+    <string name="switchcamera">SwitchCamera</string>
+
+
+    <string name="text_change_photo_profile">Change Photo</string>
+    <string name="title_post_add">Create</string>
+    <string name="title_post_edit">Edit</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="choose">Choose</string>
+
+    <string name="posting">Posting</string>
+    <string name="name_pet">Nama Hewan</string>
+    <string name="animal_type">Jenis Hewan</string>
+    <string name="no_whatsapp">Nomer WhatsApp</string>
+    <string name="description">Deskripsi</string>
+
+    <string name="search_post">search_post</string>
+    <string name="text_dog">Dog</string>
+    <string name="text_cat">Cat</string>
+    <string name="text_around_you">Around you</string>
+    <string name="text_search">Search</string>
+
+    <string name="language">Ganti Bahasa</string>
+    <string name="content_fav">content fav</string>
+
+</resources>

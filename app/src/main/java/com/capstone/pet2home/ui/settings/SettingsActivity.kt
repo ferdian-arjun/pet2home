@@ -2,10 +2,10 @@ package com.capstone.pet2home.ui.settings
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.translationMatrix
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivitySettingsBinding
 import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordActivity
@@ -24,8 +24,13 @@ class SettingsActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
         }
 
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        buttonListener()
+    }
+
+    private fun buttonListener(){
+        binding.cvLanguage.setOnClickListener{
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
 
         binding.cvEditProfile.setOnClickListener{
             val intent = Intent(this, EditProfileActivity::class.java,)

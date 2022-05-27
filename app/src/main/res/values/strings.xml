@@ -32,15 +32,15 @@
     <string name="share_profile">Share profile</string>
     <string name="settings_profile">Settings profile</string>
     <string name="text_edit_profile">Edit Profile</string>
-    <string name="text_change_password">Ubah Password</string>
-    <string name="text_change_language">Ubah Bahasa</string>
+    <string name="text_change_password">Change Password</string>
+    <string name="text_change_language">Change Language</string>
     <string name="text_logout">Logout</string>
-    <string name="title_menu_1">Informasi Adopsi</string>
-    <string name="desc_menu_1">Mencari berbagai informasi mengenai hewan yang available untuk diadopsi</string>
-    <string name="title_menu_2">Identiffikasi hewan</string>
-    <string name="title_menu_3">Informasi Lainnya.</string>
-    <string name="desc_menu_2">Identifikasi hewan kalian untuk mengetahui jenis ras yang ada pada hewanmu</string>
-    <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
+    <string name="title_menu_1">Adoption Information</string>
+    <string name="desc_menu_1">Looking for various information about animals available for adoption</string>
+    <string name="title_menu_2">Animal identification</string>
+    <string name="title_menu_3">More Information.</string>
+    <string name="desc_menu_2">Identify your animal to find out the type of race that exists in your animal</string>
+    <string name="desc_menu_3">Come join us and choose a pet that you will keep</string>
     <string name="menu1">Menu</string>
     <string name="menu2">Menu2</string>
     <string name="menu3">Menu3</string>
@@ -58,16 +58,18 @@
     <string name="choose">Choose</string>
 
     <string name="posting">Posting</string>
-    <string name="name_pet">Nama Hewan</string>
-    <string name="animal_type">Jenis Hewan</string>
-    <string name="no_whatsapp">Nomer WhatsApp</string>
-    <string name="description">Deskripsi</string>
+    <string name="name_pet">animal name</string>
+    <string name="animal_type">animal type</string>
+    <string name="no_whatsapp">whatsapp number</string>
+    <string name="description">description</string>
 
     <string name="search_post">search_post</string>
     <string name="text_dog">Dog</string>
     <string name="text_cat">Cat</string>
     <string name="text_around_you">Around you</string>
     <string name="text_search">Search</string>
+    <string name="language">Change Language</string>
+    <string name="content_fav">content fav</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
