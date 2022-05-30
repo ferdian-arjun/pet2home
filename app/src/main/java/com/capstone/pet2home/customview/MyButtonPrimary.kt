@@ -5,12 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.Gravity
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.capstone.pet2home.R
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.color.MaterialColors
 
 class MyButtonPrimary: MaterialButton {
 

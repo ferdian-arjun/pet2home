@@ -149,7 +149,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="24dp"
         android:clickable="true"
         android:contentDescription="@string/default_text"
         app:tint="@android:color/white"

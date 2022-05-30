@@ -1,8 +1,8 @@
 package com.capstone.pet2home.ui.onboardingpage
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.pet2home.databinding.ActivityOnBoardingPageBinding
 import com.capstone.pet2home.ui.login.LoginActivity
 import com.capstone.pet2home.ui.register.RegisterActivity
