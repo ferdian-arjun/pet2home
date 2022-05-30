@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.postadd.PostAddActivity">
+    tools:context=".ui.postadd.PostAddActivity"
+    tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -117,11 +118,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_location">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_whatshapp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_whatshapp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -158,8 +159,8 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.capstone.pet2home.customview.MyButtonPosting
-            android:id="@+id/btn_posting"
+        <com.capstone.pet2home.customview.MyButtonEditPost
+            android:id="@+id/btn_update_posting"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:enabled="false"
