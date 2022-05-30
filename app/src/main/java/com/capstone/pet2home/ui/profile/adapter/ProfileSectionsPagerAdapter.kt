@@ -1,6 +1,5 @@
 package com.capstone.pet2home.ui.profile.adapter
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.capstone.pet2home.ui.profile.ProfileFavoriteFragment

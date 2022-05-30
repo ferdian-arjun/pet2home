@@ -2,11 +2,9 @@ package com.capstone.pet2home.ui.search
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import android.text.Selection.setSelection
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT
 import androidx.fragment.app.Fragment

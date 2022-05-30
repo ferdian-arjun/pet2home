@@ -2,8 +2,6 @@ package com.capstone.pet2home.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast

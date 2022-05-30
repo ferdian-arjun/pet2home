@@ -3,11 +3,8 @@ package com.capstone.pet2home.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.pet2home.R
 import com.capstone.pet2home.model.Post
@@ -15,8 +12,11 @@ import com.capstone.pet2home.model.Post
 class ListPostAdapter(
     private val listPost: ArrayList<Post>,
     private var optionsMenuClickListener: OptionsMenuClickListener,
+    private var onItemClickCallback: OnItemClickCallback,
     private val binding: RecyclerView,
 ) : RecyclerView.Adapter<ListPostAdapter.ListViewHolder>() {
+
+  //  private lateinit var onItemClickCallback: OnItemClickCallback
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var postImage: ImageView = itemView.findViewById(R.id.img_item_photo)
@@ -44,6 +44,9 @@ class ListPostAdapter(
            holder.itemView.layoutParams.height = 1700
         }
 
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(data = listPost[position])
+        }
 
 
         holder.btnMenu.setOnClickListener{
@@ -52,9 +55,17 @@ class ListPostAdapter(
 
     }
 
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun getItemCount(): Int = listPost.size
 
     interface OptionsMenuClickListener {
         fun onOptionsMenuClicked(position: Int)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Post)
     }
 }

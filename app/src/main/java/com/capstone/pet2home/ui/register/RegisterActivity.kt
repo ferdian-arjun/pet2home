@@ -1,8 +1,8 @@
 package com.capstone.pet2home.ui.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.capstone.pet2home.databinding.ActivityRegisterBinding
 import com.capstone.pet2home.emailFormat
