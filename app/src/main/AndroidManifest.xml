@@ -6,9 +6,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +17,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pet2home">
+        android:theme="@style/Theme.Pet2home"
+        >
+        <activity
+            android:name=".ui.postdetail.PostDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.lens.LensActivity"
             android:exported="false" />
@@ -35,9 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.splashscreen.SplashScreen"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.settings.changepassword.ChangePasswordActivity"
             android:exported="false"
@@ -52,7 +56,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

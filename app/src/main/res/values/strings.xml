@@ -70,6 +70,10 @@
     <string name="text_search">Search</string>
     <string name="language">Change Language</string>
     <string name="content_fav">content fav</string>
+    <string name="text_type_label">Type</string>
+    <string name="text_age_label">Age</string>
+    <string name="text_sex_label">Sex</string>
+    <string name="tv_about_label">About</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

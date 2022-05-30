@@ -1,9 +1,12 @@
 package com.capstone.pet2home.ui.home
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +16,7 @@ import com.capstone.pet2home.databinding.FragmentHomeBinding
 import com.capstone.pet2home.helper.MarginItemDecoration
 import com.capstone.pet2home.model.Post
 import com.capstone.pet2home.ui.home.adapter.ListPostAdapter
+import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -81,23 +85,32 @@ class HomeFragment : Fragment() {
 
         val listPost = ArrayList<Post>()
         for (i in dataPostTitle.indices) {
-            val hero = Post(dataPostTitle[i],dataPostLocation[i], dataPhotoImage.getResourceId(i, -1))
-            listPost.add(hero)
+            val post = Post(dataPostTitle[i],dataPostLocation[i], dataPhotoImage.getResourceId(i, -1))
+            listPost.add(post)
         }
         return listPost
     }
 
     private fun showRecyclerList(rv: RecyclerView, orientation: Int) {
         rv.layoutManager = LinearLayoutManager(context, orientation,false)
-        rv.adapter = ListPostAdapter(list, object : ListPostAdapter.OptionsMenuClickListener{
-            override fun onOptionsMenuClicked(position: Int) {
-              //  performOptionsMenuClick(position)
-            }
-        }, rv)
+        rv.adapter = ListPostAdapter(list,
+            optionsMenuClickListener = object : ListPostAdapter.OptionsMenuClickListener{
+                override fun onOptionsMenuClicked(position: Int) {
+                  //  performOptionsMenuClick(position)
+                }
+            },
+            onItemClickCallback =  object : ListPostAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Post) {
+                    startActivity(Intent(context, PostDetailActivity::class.java))
+                }
+            },
+            rv
+        )
 
         rv.addItemDecoration(
            MarginItemDecoration(spaceSize = resources.getDimensionPixelSize(R.dimen.margin_default), orientation = orientation)
         )
+
     }
 
 
