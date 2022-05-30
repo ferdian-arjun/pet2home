@@ -72,5 +72,9 @@
 
     <string name="language">Ganti Bahasa</string>
     <string name="content_fav">content fav</string>
+    <string name="age">Usia</string>
+    <string name="instagram">Instagram</string>
+    <string name="location">Lokasi</string>
+    <string name="update_post">Update Post</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui.postadd
+package com.capstone.pet2home.ui.postadd.editpost
 
 import android.Manifest
 import android.app.AlertDialog
@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -17,27 +18,26 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import com.capstone.pet2home.R
-import com.capstone.pet2home.databinding.ActivityPostAddBinding
+import com.capstone.pet2home.databinding.ActivityEditPostBinding
 import com.capstone.pet2home.rotateBitmap
 import com.capstone.pet2home.ui.camera.CameraActivity
 import com.capstone.pet2home.uriToFile
 import java.io.File
 
-class PostAddActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPostAddBinding
+class EditPostActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityEditPostBinding
     private var itemsGender: Array<String> = arrayOf("Dog","Cat")
     private var itemsAge: Array<String> = arrayOf("0-6 month","6 month - 1 years", "1 - 2 years", ">2 years")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPostAddBinding.inflate(layoutInflater)
+        binding = ActivityEditPostBinding.inflate(layoutInflater)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.apply {
-            setTitle(R.string.title_post_add)
+            setTitle(R.string.title_post_edit)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
         }
@@ -54,7 +54,7 @@ class PostAddActivity : AppCompatActivity() {
             chooseProfilPicture()
         }
 
-        binding.btnPosting.setOnClickListener{
+        binding.btnUpdatePosting.setOnClickListener{
 
         }
     }
@@ -169,7 +169,7 @@ class PostAddActivity : AppCompatActivity() {
         val deskripsi = binding.edtWhatshapp.text
 
 
-        binding.btnPosting.isEnabled =
+        binding.btnUpdatePosting.isEnabled =
             nameHewan != null && jenisHewan != null && nomerWhatsapp != null && deskripsi != null && usia != null && lokasi != null && instagram != null &&
                     binding.edtNamaHewan.text.toString().length >= 6 && binding.edtWhatshapp.text.toString().length >= 10 && binding.edtDeskripsi.text.toString().length >= 6
 

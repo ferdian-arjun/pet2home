@@ -3,6 +3,7 @@
     package="com.capstone.pet2home">
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -24,6 +25,9 @@
             android:exported="false"
             android:screenOrientation="portrait"
             />
+        <activity
+            android:name=".ui.postadd.editpost.EditPostActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />

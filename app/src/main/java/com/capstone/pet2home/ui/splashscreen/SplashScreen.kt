@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.pet2home.databinding.ActivitySplashScreenBinding
-import com.capstone.pet2home.ui.onboardingpage.OnBoardingPage
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
@@ -18,7 +17,7 @@ class SplashScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler(mainLooper).postDelayed({
-            val intent = Intent(this, OnBoardingPage::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)
