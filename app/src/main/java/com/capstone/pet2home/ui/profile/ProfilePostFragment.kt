@@ -1,10 +1,9 @@
 package com.capstone.pet2home.ui.profile
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -14,9 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.pet2home.R
-import com.capstone.pet2home.databinding.FragmentProfileBinding
 import com.capstone.pet2home.databinding.FragmentProfilePostBinding
 import com.capstone.pet2home.model.Post
+import com.capstone.pet2home.ui.postadd.editpost.EditPostActivity
 import com.capstone.pet2home.ui.profile.adapter.ListPostUserAdapter
 
 class ProfilePostFragment : Fragment() {
@@ -74,8 +73,8 @@ class ProfilePostFragment : Fragment() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item?.itemId) {
                 R.id.edit_post -> {
-                    Toast.makeText(context, "${list[position].title} edit", Toast.LENGTH_SHORT)
-                        .show()
+                    val intent = Intent(activity, EditPostActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.delete_post -> {
