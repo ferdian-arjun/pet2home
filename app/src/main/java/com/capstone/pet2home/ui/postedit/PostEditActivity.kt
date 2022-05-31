@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui.postadd.editpost
+package com.capstone.pet2home.ui.postedit
 
 import android.Manifest
 import android.app.AlertDialog
@@ -21,20 +21,20 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import com.capstone.pet2home.R
-import com.capstone.pet2home.databinding.ActivityEditPostBinding
+import com.capstone.pet2home.databinding.ActivityPostEditBinding
 import com.capstone.pet2home.rotateBitmap
 import com.capstone.pet2home.ui.camera.CameraActivity
 import com.capstone.pet2home.uriToFile
 import java.io.File
 
-class EditPostActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEditPostBinding
+class PostEditActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPostEditBinding
     private var itemsGender: Array<String> = arrayOf("Dog","Cat")
     private var itemsAge: Array<String> = arrayOf("0-6 month","6 month - 1 years", "1 - 2 years", ">2 years")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditPostBinding.inflate(layoutInflater)
+        binding = ActivityPostEditBinding.inflate(layoutInflater)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.apply {
             setTitle(R.string.title_post_edit)
@@ -96,7 +96,11 @@ class EditPostActivity : AppCompatActivity() {
 
             val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
 
-            binding.imageUserAvatar.setImageBitmap(result)
+            binding.apply {
+                imageUserAvatar.visibility = View.VISIBLE
+                imageUserAvatar.setImageBitmap(result)
+                btnChangePhoto.text = getString(R.string.text_change_photo)
+            }
         }
     }
 
@@ -107,7 +111,11 @@ class EditPostActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK){
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, this)
-            binding.imageUserAvatar.setImageURI(selectedImg)
+            binding.apply {
+                imageUserAvatar.visibility = View.VISIBLE
+                imageUserAvatar.setImageURI(selectedImg)
+                btnChangePhoto.text = getString(R.string.text_change_photo)
+            }
         }
     }
 

@@ -24,7 +24,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.postadd.editpost.EditPostActivity"
+            android:name="com.capstone.pet2home.ui.postedit.PostEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
