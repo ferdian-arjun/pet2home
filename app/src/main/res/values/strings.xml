@@ -50,20 +50,20 @@
     <string name="switchcamera">SwitchCamera</string>
 
 
-    <string name="text_change_photo_profile">Change Photo</string>
+    <string name="text_change_photo">Change Image</string>
     <string name="title_post_add">Create</string>
     <string name="title_post_edit">Edit</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="choose">Choose</string>
+    <string name="choose">Choose an image</string>
 
     <string name="posting">Posting</string>
-    <string name="name_pet">animal name</string>
-    <string name="animal_type">animal type</string>
-    <string name="no_whatsapp">whatsapp number</string>
-    <string name="description">description</string>
+    <string name="name_pet">Animal Name</string>
+    <string name="animal_type">Animal Type</string>
+    <string name="no_whatsapp">Whatsapp Number</string>
+    <string name="description">Description</string>
 
-    <string name="search_post">search_post</string>
+    <string name="search_post">Search Post</string>
     <string name="text_dog">Dog</string>
     <string name="text_cat">Cat</string>
     <string name="text_around_you">Around you</string>
@@ -78,6 +78,15 @@
     <string name="instagram">Instagram</string>
     <string name="location">Location</string>
     <string name="update_post">Update Post</string>
+    <string name="text_full_name">Full Name</string>
+    <string name="text_telp">Telp</string>
+    <string name="text_email">Email</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_date">Date</string>
+    <string name="text_update_password" translatable="false">Update password</string>
+    <string name="text_new_password">New Password</string>
+    <string name="text_old_password">Old Password</string>
+    <string name="text_add_photo">Add Image</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

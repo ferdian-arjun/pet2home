@@ -48,6 +48,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
+            finish()
             return true
         }
         return super.onContextItemSelected(item)

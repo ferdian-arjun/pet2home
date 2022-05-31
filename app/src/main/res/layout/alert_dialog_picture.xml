@@ -10,71 +10,67 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/choose"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/TextAppearance.App.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/btnCamera"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="34dp"
-            android:src="@drawable/ic_camera"
-            app:layout_constraintEnd_toStartOf="@+id/btnGallery"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/camera" />
+            <ImageView
+                android:id="@+id/btnCamera"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="92dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="34dp"
+                android:contentDescription="@string/camera"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintEnd_toStartOf="@+id/btnGallery"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/camera"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnCamera"
-            app:layout_constraintStart_toStartOf="@+id/btnCamera"
-            app:layout_constraintTop_toBottomOf="@+id/btnCamera" />
+            <TextView
+                style="@style/TextAppearance.App.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/camera"
+                app:layout_constraintEnd_toEndOf="@+id/btnCamera"
+                app:layout_constraintStart_toStartOf="@+id/btnCamera"
+                app:layout_constraintTop_toBottomOf="@+id/btnCamera" />
 
-        <ImageView
-            android:id="@+id/btnGallery"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="95dp"
-            android:src="@drawable/ic_gallery"
-            app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnCamera"
-            app:layout_constraintTop_toTopOf="@+id/btnCamera"
-            app:layout_constraintVertical_bias="0.0"
-            android:contentDescription="@string/gallery" />
+            <ImageView
+                android:id="@+id/btnGallery"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="92dp"
+                android:contentDescription="@string/gallery"
+                android:src="@drawable/ic_gallery"
+                app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnCamera"
+                app:layout_constraintTop_toTopOf="@+id/btnCamera"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/gallery"
-            android:textColor="@color/grey"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnGallery"
-            app:layout_constraintStart_toStartOf="@+id/btnGallery"
-            app:layout_constraintTop_toBottomOf="@+id/btnGallery" />
+            <TextView
+                style="@style/TextAppearance.App.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/gallery"
+                app:layout_constraintEnd_toEndOf="@+id/btnGallery"
+                app:layout_constraintStart_toStartOf="@+id/btnGallery"
+                app:layout_constraintTop_toBottomOf="@+id/btnGallery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

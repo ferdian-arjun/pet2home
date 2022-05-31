@@ -88,4 +88,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, LensCameraActivity::class.java))
         overridePendingTransition(0, 0)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }
