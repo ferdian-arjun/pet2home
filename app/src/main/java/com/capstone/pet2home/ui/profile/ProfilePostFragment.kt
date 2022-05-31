@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.FragmentProfilePostBinding
 import com.capstone.pet2home.model.Post
-import com.capstone.pet2home.ui.postadd.editpost.EditPostActivity
+import com.capstone.pet2home.ui.postedit.PostEditActivity
 import com.capstone.pet2home.ui.profile.adapter.ListPostUserAdapter
 
 class ProfilePostFragment : Fragment() {
@@ -73,7 +73,7 @@ class ProfilePostFragment : Fragment() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item?.itemId) {
                 R.id.edit_post -> {
-                    val intent = Intent(activity, EditPostActivity::class.java)
+                    val intent = Intent(activity, PostEditActivity::class.java)
                     startActivity(intent)
                     true
                 }

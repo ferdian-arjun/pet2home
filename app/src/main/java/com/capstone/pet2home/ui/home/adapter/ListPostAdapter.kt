@@ -20,13 +20,17 @@ class ListPostAdapter(
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var postImage: ImageView = itemView.findViewById(R.id.img_item_photo)
-        var postTitle: TextView = itemView.findViewById(R.id.tv_item_name)
-        var postLocation: TextView = itemView.findViewById(R.id.tv_item_description)
+        var postTitle: TextView = itemView.findViewById(R.id.tv_title_post)
+        var postLocation: TextView = itemView.findViewById(R.id.tv_location_post)
         var btnMenu: View = itemView.findViewById(R.id.btn_menu_option)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate( R.layout.item_row_post_home, parent, false)
+        val view: View =
+            when(binding.id){
+                R.id.rv_posting_horizon -> LayoutInflater.from(parent.context).inflate( R.layout.item_row_post_home, parent, false)
+                else -> LayoutInflater.from(parent.context).inflate( R.layout.item_post, parent, false)
+            }
         return ListViewHolder(view)
     }
 
@@ -41,7 +45,7 @@ class ListPostAdapter(
             if (position == itemCount - 1){
             }
         }  else {
-           holder.itemView.layoutParams.height = 1700
+//           holder.itemView.layoutParams.height = 1700
         }
 
         holder.itemView.setOnClickListener {
