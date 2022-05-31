@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        android:paddingBottom="24dp"
+        android:layout_margin="12dp">
 
         <ImageView
             android:id="@+id/image_user_avatar"
@@ -21,21 +22,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
             tools:src="@tools:sample/avatars" />
 
         <Button
             android:id="@+id/btn_change_photo"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:backgroundTint="@android:color/transparent"
-            android:text="@string/text_change_photo_profile"
+            android:gravity="center"
+            android:text="@string/text_add_photo"
+            android:textAppearance="@style/TextAppearance.App.Headline5"
+            android:drawableLeft="@drawable/ic_gallery"
+            android:drawableTint="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
             android:textStyle="bold"
-            android:textSize="12sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            app:layout_constraintEnd_toEndOf="@+id/image_user_avatar"
-            app:layout_constraintStart_toStartOf="@+id/image_user_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_user_avatar" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,6 +54,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_nama_hewan"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
@@ -68,6 +73,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_jenis_hewan"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -85,6 +91,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_usia"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -102,6 +109,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_location"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -119,6 +127,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_whatshapp"
+            android:textAppearance="@style/TextAppearance.App.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -136,6 +145,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_instagram"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -153,6 +163,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_deskripsi"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine" />
@@ -160,9 +171,9 @@
 
         <com.capstone.pet2home.customview.MyButtonPosting
             android:id="@+id/btn_posting"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            style="@style/ButtonPrimary"
             android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_deskripsi" />

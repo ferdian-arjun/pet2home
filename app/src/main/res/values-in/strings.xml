@@ -51,7 +51,7 @@
     <string name="switchcamera">SwitchCamera</string>
 
 
-    <string name="text_change_photo_profile">Change Photo</string>
+    <string name="text_change_photo">Ganti Gambar</string>
     <string name="title_post_add">Create</string>
     <string name="title_post_edit">Edit</string>
     <string name="camera">Camera</string>
@@ -64,11 +64,11 @@
     <string name="no_whatsapp">Nomer WhatsApp</string>
     <string name="description">Deskripsi</string>
 
-    <string name="search_post">search_post</string>
-    <string name="text_dog">Dog</string>
-    <string name="text_cat">Cat</string>
-    <string name="text_around_you">Around you</string>
-    <string name="text_search">Search</string>
+    <string name="search_post">Cari</string>
+    <string name="text_dog">Anjing</string>
+    <string name="text_cat">Kucing</string>
+    <string name="text_around_you">Sekitar Anda</string>
+    <string name="text_search">Cari</string>
 
     <string name="language">Ganti Bahasa</string>
     <string name="content_fav">content fav</string>
@@ -76,5 +76,17 @@
     <string name="instagram">Instagram</string>
     <string name="location">Lokasi</string>
     <string name="update_post">Update Post</string>
+    <string name="text_type_label">Tipe</string>
+    <string name="text_age_label">Umur</string>
+    <string name="text_sex_label">Jenis Kelamin</string>
+    <string name="tv_about_label">Tentang</string>
+    <string name="text_full_name">Nama Lengkap</string>
+    <string name="text_telp">Nomor Telp</string>
+    <string name="text_email">Email</string>
+    <string name="text_gender">Jenis Kelamin</string>
+    <string name="text_date">Tanggal Lahir</string>
+    <string name="text_new_password">Password Baru</string>
+    <string name="text_old_password">Password Lama</string>
+    <string name="text_add_photo">Tambah Gambar</string>
 
 </resources>

@@ -29,14 +29,11 @@ class MyButtonPosting: AppCompatButton{
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         background = if(isEnabled) enabledBackground else disabledBackground
-
-        textSize = 15f
         gravity = Gravity.CENTER
         text = if(isEnabled) context.getString(R.string.posting) else context.getString(R.string.posting)
     }
 
     private fun init(){
-        txtColor = ContextCompat.getColor(context, R.color.black)
         enabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button) as Drawable
         disabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_disable) as Drawable
     }

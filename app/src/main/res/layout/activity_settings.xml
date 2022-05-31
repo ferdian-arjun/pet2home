@@ -16,7 +16,7 @@
             android:id="@+id/cv_edit_profile"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:backgroundTint="?attr/colorOnPrimary"
+            android:backgroundTint="?android:attr/windowBackground"
             android:layout_marginBottom="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/text_edit_profile"
-                    android:textSize="14sp"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
                     app:layout_constraintBottom_toBottomOf="@+id/vi_edit_profile"
                     app:layout_constraintEnd_toStartOf="@+id/vi_edit_profile"
                     app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:id="@+id/cv_change_password"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:backgroundTint="?attr/colorOnPrimary"
+            android:backgroundTint="?android:attr/windowBackground"
             android:layout_marginBottom="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/text_change_password"
-                    android:textSize="14sp"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
                     app:layout_constraintBottom_toBottomOf="@+id/vi_change_password"
                     app:layout_constraintEnd_toStartOf="@+id/vi_change_password"
                     app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,7 @@
             android:id="@+id/cv_language"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:backgroundTint="?attr/colorOnPrimary"
+            android:backgroundTint="?android:attr/windowBackground"
             android:layout_marginBottom="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/language"
-                    android:textSize="14sp"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
                     app:layout_constraintBottom_toBottomOf="@+id/vi_language"
                     app:layout_constraintEnd_toStartOf="@+id/vi_language"
                     app:layout_constraintStart_toStartOf="parent"
@@ -124,12 +124,8 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_margin="12dp"
+            style="@style/ButtonPrimary"
             android:text="@string/text_logout"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textStyle="bold" />
+            android:layout_margin="12dp" />
     </LinearLayout>
 </ScrollView >

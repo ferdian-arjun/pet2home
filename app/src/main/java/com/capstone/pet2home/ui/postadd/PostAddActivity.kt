@@ -96,7 +96,11 @@ class PostAddActivity : AppCompatActivity() {
 
             val result = rotateBitmap(BitmapFactory.decodeFile(myFile.path), isBackCamera)
 
-            binding.imageUserAvatar.setImageBitmap(result)
+            binding.apply {
+                imageUserAvatar.visibility = View.VISIBLE
+                imageUserAvatar.setImageBitmap(result)
+                btnChangePhoto.text = getString(R.string.text_change_photo)
+            }
         }
     }
 
@@ -107,7 +111,11 @@ class PostAddActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK){
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, this)
-            binding.imageUserAvatar.setImageURI(selectedImg)
+            binding.apply {
+                imageUserAvatar.visibility = View.VISIBLE
+                imageUserAvatar.setImageURI(selectedImg)
+                btnChangePhoto.text = getString(R.string.text_change_photo)
+            }
         }
     }
 
