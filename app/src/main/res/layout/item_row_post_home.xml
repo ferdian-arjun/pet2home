@@ -28,7 +28,7 @@
                 android:contentDescription="@string/default_text" />
 
             <TextView
-                android:id="@+id/tv_item_name"
+                android:id="@+id/tv_title_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -37,11 +37,11 @@
                 android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
-                card_view:layout_constraintBottom_toTopOf="@+id/tv_item_description"
+                card_view:layout_constraintBottom_toTopOf="@+id/tv_location_post"
                 card_view:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tv_item_description"
+                android:id="@+id/tv_location_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"

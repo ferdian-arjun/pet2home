@@ -1,12 +1,10 @@
 package com.capstone.pet2home.ui.home
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,6 +36,11 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.apply {
+            btnFilterDog.isSelected = true
+            btnFilterCat.isSelected = true
+        }
 
         bannerCarousel()
         postContent()
@@ -107,10 +110,11 @@ class HomeFragment : Fragment() {
             rv
         )
 
-        rv.addItemDecoration(
-           MarginItemDecoration(spaceSize = resources.getDimensionPixelSize(R.dimen.margin_default), orientation = orientation)
-        )
-
+        if (rv.id == R.id.rv_posting_horizon){
+            rv.addItemDecoration(
+                MarginItemDecoration(spaceSize = resources.getDimensionPixelSize(R.dimen.margin_default), orientation = orientation)
+            )
+        }
     }
 
 
