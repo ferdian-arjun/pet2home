@@ -12,30 +12,29 @@
     <string name="register">Daftar</string>
     <string name="already_have_an_account">Sudah mempunyai akun ?</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_lens">Lens</string>
-    <string name="title_profile">Profile</string>
-    <string name="title_settings">Settings</string>
-    <string name="title_edit_profile">Edit Profile</string>
-    <string name="title_change_password">Ganti Password</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_lens">Scan</string>
+    <string name="title_settings">Pengaturan</string>
+    <string name="title_edit_profile">Edit Profil Saya</string>
+    <string name="title_change_password">Ganti Kata Sandi</string>
     <string name="user_avatar">user_avatar</string>
     <string name="user_email">marilnwatkns@gmail.com</string>
     <string name="user_fullName">Marilyn Watkins</string>
     <string name="text_posting">Posting</string>
     <string name="default_number">0</string>
     <string name="default_text">-</string>
-    <string name="text_favorite">Favorite</string>
+    <string name="text_favorite">Favorit</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_post">Post</string>
-    <string name="tab_text_favorite">Favorite</string>
-    <string name="text_post_title">Title</string>
-    <string name="text_post_location">Location</string>
-    <string name="share_profile">Share profile</string>
-    <string name="settings_profile">Settings profile</string>
-    <string name="text_edit_profile">Edit Profile</string>
-    <string name="text_change_password">Ubah Password</string>
+    <string name="tab_text_favorite">Favorit</string>
+    <string name="text_post_title">Judul</string>
+    <string name="text_post_location">Lokasi</string>
+    <string name="share_profile">Bagikan Profile</string>
+    <string name="settings_profile">Pengaturan Profile</string>
+    <string name="text_edit_profile">Edit Profil Saya</string>
+    <string name="text_change_password">Ubah Kata Sandi</string>
     <string name="text_change_language">Ubah Bahasa</string>
-    <string name="text_logout">Logout</string>
+    <string name="text_logout">Keluar</string>
     <string name="title_menu_1">Informasi Adopsi</string>
     <string name="desc_menu_1">Mencari berbagai informasi mengenai hewan yang available untuk diadopsi</string>
     <string name="title_menu_2">Identiffikasi hewan</string>
@@ -48,15 +47,15 @@
     <string name="iconpet2home">IconPet2Home</string>
 
     <string name="capturimage">capturImage</string>
-    <string name="switchcamera">SwitchCamera</string>
+    <string name="switchcamera">GantiKamera</string>
 
 
     <string name="text_change_photo">Ganti Gambar</string>
-    <string name="title_post_add">Create</string>
-    <string name="title_post_edit">Edit</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
-    <string name="choose">Choose</string>
+    <string name="title_post_add">Buat Postingan</string>
+    <string name="title_post_edit">Edit Postingan</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="choose">Pilih Gambar</string>
 
     <string name="posting">Posting</string>
     <string name="name_pet">Nama Hewan</string>
@@ -67,7 +66,7 @@
     <string name="search_post">Cari</string>
     <string name="text_dog">Anjing</string>
     <string name="text_cat">Kucing</string>
-    <string name="text_around_you">Sekitar Anda</string>
+    <string name="text_around_you">Di Sekitar Kamu</string>
     <string name="text_search">Cari</string>
 
     <string name="language">Ganti Bahasa</string>
@@ -85,8 +84,12 @@
     <string name="text_email">Email</string>
     <string name="text_gender">Jenis Kelamin</string>
     <string name="text_date">Tanggal Lahir</string>
-    <string name="text_new_password">Password Baru</string>
-    <string name="text_old_password">Password Lama</string>
+    <string name="text_new_password">Kata Sandi Baru</string>
+    <string name="text_old_password">Kata Sandi Lama</string>
     <string name="text_add_photo">Tambah Gambar</string>
+    <string name="title_change_language">Pilih Bahasa</string>
+    <string name="title_profile">Profil Saya</string>
+    <string name="text_update_password">Perbarui Kata Sandi</string>
+    <string name="text_update_profile">Perbarui Profil</string>
 
 </resources>
