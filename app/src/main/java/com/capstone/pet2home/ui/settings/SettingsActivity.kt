@@ -2,21 +2,25 @@ package com.capstone.pet2home.ui.settings
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivitySettingsBinding
+import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.ui.settings.changelanguage.ChangeLanguageActivity
 import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordActivity
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity
 
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
+    private val localeHelper = LocaleHelper(this)
+    private lateinit var languageNow: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        languageNow = localeHelper.getLanguageActive()
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val actionBar: ActionBar? = supportActionBar
@@ -29,9 +33,16 @@ class SettingsActivity : AppCompatActivity() {
         buttonListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(languageNow != localeHelper.getLanguageActive()){
+            recreate()
+        }
+    }
+
     private fun buttonListener(){
         binding.cvLanguage.setOnClickListener{
-            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            val intent = Intent(this, ChangeLanguageActivity::class.java)
             startActivity(intent)
         }
 
