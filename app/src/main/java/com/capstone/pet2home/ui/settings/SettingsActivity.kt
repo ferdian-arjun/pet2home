@@ -1,20 +1,30 @@
 package com.capstone.pet2home.ui.settings
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivitySettingsBinding
 import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.preference.UserPreference
+import com.capstone.pet2home.ui.ViewModelFactory
+import com.capstone.pet2home.ui.login.LoginActivity
 import com.capstone.pet2home.ui.settings.changelanguage.ChangeLanguageActivity
 import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordActivity
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
+    private lateinit var settingsViewModel: SettingsViewModel
     private val localeHelper = LocaleHelper(this)
     private lateinit var languageNow: String
 
@@ -30,6 +40,7 @@ class SettingsActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back_24)
         }
 
+        setupViewModel()
         buttonListener()
     }
 
@@ -38,6 +49,12 @@ class SettingsActivity : AppCompatActivity() {
         if(languageNow != localeHelper.getLanguageActive()){
             recreate()
         }
+    }
+
+    private fun setupViewModel() {
+        settingsViewModel = ViewModelProvider(this,
+            ViewModelFactory(UserPreference.getInstance(dataStore), this)
+        )[SettingsViewModel::class.java]
     }
 
     private fun buttonListener(){
@@ -55,7 +72,15 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnLogout.setOnClickListener {
+            settingsViewModel.logout()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {

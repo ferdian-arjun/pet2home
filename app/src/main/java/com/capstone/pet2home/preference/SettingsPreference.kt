@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui.settings
+package com.capstone.pet2home.preference
 
 import android.content.Context
 import com.capstone.pet2home.model.SettingsModel

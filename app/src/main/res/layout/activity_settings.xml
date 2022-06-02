@@ -124,6 +124,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:id="@+id/btn_logout"
             style="@style/ButtonPrimary"
             android:text="@string/text_logout"
             android:layout_margin="12dp" />

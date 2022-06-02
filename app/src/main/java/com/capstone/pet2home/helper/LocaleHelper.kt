@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.capstone.pet2home.model.SettingsModel
-import com.capstone.pet2home.ui.settings.SettingsPreference
+import com.capstone.pet2home.preference.SettingsPreference
 import java.util.*
 
 class LocaleHelper(private val activity: Activity) {

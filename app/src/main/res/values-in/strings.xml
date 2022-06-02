@@ -91,5 +91,7 @@
     <string name="title_profile">Profil Saya</string>
     <string name="text_update_password">Perbarui Kata Sandi</string>
     <string name="text_update_profile">Perbarui Profil</string>
+    <string name="failed_login">Gagal Login</string>
+    <string name="failed_register">Gagal Register</string>
 
 </resources>
