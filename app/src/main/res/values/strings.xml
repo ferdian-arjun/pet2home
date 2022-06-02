@@ -91,6 +91,8 @@
     <string name="text_indonesian" translatable="false">Bahasa Indonesia</string>
     <string name="text_english" translatable="false">English</string>
     <string name="text_update_profile">Update Profile</string>
+    <string name="failed_login">Failed Login</string>
+    <string name="failed_register">Failed Register</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

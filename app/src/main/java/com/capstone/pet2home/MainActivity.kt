@@ -1,6 +1,7 @@
 package com.capstone.pet2home
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -9,21 +10,31 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.pet2home.databinding.ActivityMainBinding
 import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.preference.UserPreference
+import com.capstone.pet2home.ui.MainViewModel
+import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.camera.LensCameraActivity
+import com.capstone.pet2home.ui.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val localeHelper = LocaleHelper(this)
     private lateinit var languageNow: String
+    private lateinit var mainViewModel: MainViewModel
 
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
@@ -59,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupViewModel()
+
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
                 this,
@@ -86,6 +99,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setupViewModel() {
+        mainViewModel = ViewModelProvider(this,
+            ViewModelFactory(UserPreference.getInstance(dataStore), this)
+        )[MainViewModel::class.java]
+
+        mainViewModel.getUser().observe(this) { user ->
+            if (user.token.isEmpty()) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
     }
 
     fun onLens(item: MenuItem) {
