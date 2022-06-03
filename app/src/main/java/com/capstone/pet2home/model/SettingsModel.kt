@@ -5,5 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class SettingsModel(
-    var language: String? = null
+    var language: String? = null,
+    var isOnboardPage: Boolean? = null
 ): Parcelable

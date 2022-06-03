@@ -12,7 +12,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivitySettingsBinding
-import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.helper.SettingsHelper
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.login.LoginActivity
@@ -25,12 +25,12 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var settingsViewModel: SettingsViewModel
-    private val localeHelper = LocaleHelper(this)
+    private val settingsHelper = SettingsHelper(this)
     private lateinit var languageNow: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        languageNow = localeHelper.getLanguageActive()
+        languageNow = settingsHelper.getLanguageActive()
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val actionBar: ActionBar? = supportActionBar
@@ -46,7 +46,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(languageNow != localeHelper.getLanguageActive()){
+        if(languageNow != settingsHelper.getLanguageActive()){
             recreate()
         }
     }

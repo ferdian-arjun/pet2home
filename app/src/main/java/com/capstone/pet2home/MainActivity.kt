@@ -19,7 +19,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.pet2home.databinding.ActivityMainBinding
-import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.helper.SettingsHelper
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.MainViewModel
 import com.capstone.pet2home.ui.ViewModelFactory
@@ -32,7 +32,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val localeHelper = LocaleHelper(this)
+    private val settingHelper = SettingsHelper(this)
     private lateinit var languageNow: String
     private lateinit var mainViewModel: MainViewModel
 
@@ -65,8 +65,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        localeHelper.loadLocal()
-        languageNow = localeHelper.getLanguageActive()
+        settingHelper.loadLocal()
+        settingHelper.saveOnBoardPage(false)
+        languageNow = settingHelper.getLanguageActive()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -126,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(languageNow != localeHelper.getLanguageActive()){
+        if(languageNow != settingHelper.getLanguageActive()){
             recreate()
         }
     }
