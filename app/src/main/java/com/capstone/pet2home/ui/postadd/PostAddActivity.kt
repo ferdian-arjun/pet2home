@@ -1,13 +1,16 @@
 package com.capstone.pet2home.ui.postadd
 
 import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -20,11 +23,17 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
+import com.capstone.pet2home.BuildConfig
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivityPostAddBinding
 import com.capstone.pet2home.rotateBitmap
 import com.capstone.pet2home.ui.camera.CameraActivity
 import com.capstone.pet2home.uriToFile
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import java.io.File
 
 class PostAddActivity : AppCompatActivity() {
@@ -43,6 +52,8 @@ class PostAddActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
+        Places.initialize(applicationContext, BuildConfig.MAPS_API_KEY)
+
         setMyButtonEnable()
         viewSetupInputDropdownGender()
         viewSetupInputDropdownAge()
@@ -56,6 +67,48 @@ class PostAddActivity : AppCompatActivity() {
 
         binding.btnPosting.setOnClickListener{
 
+        }
+        binding.edtLocation.setOnClickListener{
+
+            // return after the user has made a selection.
+            val fields = listOf(Place.Field.ADDRESS,Place.Field.LAT_LNG, Place.Field.NAME)
+
+            // Start the autocomplete intent.
+            val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                .build(this)
+            startActivityForResult(intent, 100)
+
+
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 100) {
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+                    data?.let {
+                        val place = Autocomplete.getPlaceFromIntent(data)
+                        binding.edtLocation.setText(place.address)
+                        Log.i(TAG, "Place: ${place.address} LatLong: ${place.latLng}")
+                    }
+                }
+                AutocompleteActivity.RESULT_ERROR -> {
+                    data?.let {
+                        val status = Autocomplete.getStatusFromIntent(data)
+                        Toast.makeText(applicationContext, status.statusMessage, Toast.LENGTH_SHORT).show()
+                        Log.i(TAG, status.statusMessage ?: "")
+                    }
+                }
+                Activity.RESULT_CANCELED -> {
+                    // The user canceled the operation.
+                    Toast.makeText(applicationContext, "cancelled", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+            return
         }
     }
 
