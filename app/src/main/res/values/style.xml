@@ -3,7 +3,7 @@
     <!-- TextInput Style -->
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:layout_marginTop">12dp</item>
-        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidth">1dp</item>
         <item name="expandedHintEnabled">true</item>
         <item name="boxStrokeColor">?attr/colorPrimary</item>
         <item name="colorControlNormal">@color/red</item>
@@ -16,7 +16,7 @@
     </style>
     <style name="TextInputLayoutStyleDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="android:layout_marginTop">12dp</item>
-        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidth">1dp</item>
         <item name="expandedHintEnabled">true</item>
         <item name="boxStrokeColor">?attr/colorPrimary</item>
         <item name="colorControlNormal">@color/red</item>

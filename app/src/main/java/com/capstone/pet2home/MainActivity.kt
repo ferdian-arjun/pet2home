@@ -19,20 +19,21 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.pet2home.databinding.ActivityMainBinding
-import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.helper.SettingsHelper
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.MainViewModel
 import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.camera.LensCameraActivity
 import com.capstone.pet2home.ui.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tapadoo.alerter.Alerter
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val localeHelper = LocaleHelper(this)
+    private val settingHelper = SettingsHelper(this)
     private lateinit var languageNow: String
     private lateinit var mainViewModel: MainViewModel
 
@@ -65,11 +66,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        localeHelper.loadLocal()
-        languageNow = localeHelper.getLanguageActive()
+        settingHelper.loadLocal()
+        settingHelper.saveOnBoardPage(false)
+        languageNow = settingHelper.getLanguageActive()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        alertFromLoginActivity()
         setupViewModel()
 
         if (!allPermissionsGranted()) {
@@ -101,6 +104,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun alertFromLoginActivity() {
+        val message = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE_ALERT)
+        if(message != null){
+            Alerter.create(this)
+                .setTitle(getString(R.string.success))
+                .setText(message)
+                .setBackgroundColorRes(R.color.teal_200)
+                .setDuration(1500)
+                .setIcon(R.drawable.ic_info_24)
+                .show()
+        }
+    }
+
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(this,
             ViewModelFactory(UserPreference.getInstance(dataStore), this)
@@ -126,7 +142,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(languageNow != localeHelper.getLanguageActive()){
+        if(languageNow != settingHelper.getLanguageActive()){
             recreate()
         }
     }

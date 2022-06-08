@@ -7,6 +7,7 @@ class SettingsPreference(context: Context) {
     companion object{
         private const val PREFS_NAME = "settings_pref"
         private const val LANGUAGE = "language"
+        private const val IS_ONBOARD_PAGE = "isOnboardPage"
     }
 
     private val preference = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -14,6 +15,7 @@ class SettingsPreference(context: Context) {
     fun setSettings(value: SettingsModel){
         val editor = preference.edit()
         editor.putString(LANGUAGE, value.language)
+        value.isOnboardPage?.let { editor.putBoolean(IS_ONBOARD_PAGE, it) }
 
         editor.apply()
     }
@@ -21,6 +23,7 @@ class SettingsPreference(context: Context) {
     fun getSettings(): SettingsModel{
         val model = SettingsModel()
         model.language = preference.getString(LANGUAGE, "en")
+        model.isOnboardPage = preference.getBoolean(IS_ONBOARD_PAGE, true)
         return model
     }
 }

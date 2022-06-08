@@ -7,11 +7,11 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivityChangeLanguageBinding
-import com.capstone.pet2home.helper.LocaleHelper
+import com.capstone.pet2home.helper.SettingsHelper
 
 class ChangeLanguageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChangeLanguageBinding
-    private val localeHelper = LocaleHelper(this)
+    private val settingsHelper = SettingsHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class ChangeLanguageActivity : AppCompatActivity() {
     }
 
     private fun visibilityLanguage() {
-        val lang =  localeHelper.getLanguageActive()
+        val lang =  settingsHelper.getLanguageActive()
         if(lang == "in"){
             binding.viIndonesian.visibility = View.VISIBLE
         }
@@ -44,12 +44,12 @@ class ChangeLanguageActivity : AppCompatActivity() {
     private fun selectLanguage() {
         binding.apply {
             cvIndonesian.setOnClickListener {
-                localeHelper.setLanguage("in")
+                settingsHelper.setLanguage("in")
                 recreate()
             }
 
             cvEnglish.setOnClickListener {
-                localeHelper.setLanguage("en")
+                settingsHelper.setLanguage("en")
                 recreate()
             }
         }

@@ -14,10 +14,14 @@ import retrofit2.Response
 
 class RegisterViewModel(private val pref: UserPreference) : ViewModel() {
 
+    private val _showLoading = MutableLiveData<Boolean>()
+    val showLoading: LiveData<Boolean> = _showLoading
+
     private val _returnResponse = MutableLiveData<ReturnResponse>()
     val returnResponse: LiveData<ReturnResponse> = _returnResponse
 
     fun registerUser(requestBody: RequestBody) {
+        _showLoading.value = true
         val service = ApiConfig.getApiService().register(requestBody)
         service.enqueue(object : Callback<RegisterRes> {
             override fun onResponse(call: Call<RegisterRes>, response: Response<RegisterRes>) {
@@ -27,10 +31,12 @@ class RegisterViewModel(private val pref: UserPreference) : ViewModel() {
                 }else{
                     _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.message()))
                 }
+                _showLoading.value = false
             }
 
             override fun onFailure(call: Call<RegisterRes>, t: Throwable) {
                 _returnResponse.postValue(ReturnResponse(status = 500, message = t.message.toString()))
+                _showLoading.value = false
             }
         })
     }

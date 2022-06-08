@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">pet2home</string>
-    <string name="login">Login</string>
+    <string name="login">Sign in</string>
     <string name="email_warning">Please input a proper email</string>
     <string name="password_warning">Password must have at least 6 characters</string>
     <string name="name_warning">Name can\'t be empty</string>
     <string name="input_email">Input your email..</string>
     <string name="input_password">Input your password..</string>
     <string name="input_name">Input your name..</string>
-    <string name="don_t_have_an_account">don\'t have an account ?</string>
-    <string name="register">Register</string>
-    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="register">Sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_lens">Scan</string>
@@ -93,6 +93,10 @@
     <string name="text_update_profile">Update Profile</string>
     <string name="failed_login">Failed Login</string>
     <string name="failed_register">Failed Register</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="login_to_your_account">Login to your account</string>
+    <string name="success">Success</string>
+    <string name="success_logout">Success Logout</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
