@@ -14,6 +14,8 @@ import retrofit2.Response
 
 class LoginViewModel(private val pref: UserPreference) : ViewModel() {
 
+    private val _showLoading = MutableLiveData<Boolean>()
+    val showLoading: LiveData<Boolean> = _showLoading
 
     private val _returnResponse = MutableLiveData<ReturnResponse>()
     val returnResponse: LiveData<ReturnResponse> = _returnResponse
@@ -28,16 +30,19 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
         }
     }
 
-
-
-
     fun loginUser(requestBody: RequestBody) {
+        _showLoading.value = true
         val service = ApiConfig.getApiService().login(requestBody)
         service.enqueue(object : Callback<LoginRes> {
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
+                _showLoading.value = false
                 val responseBody = response.body()
-                if(responseBody != null){
-                    if(responseBody.success){
+                if(responseBody == null){
+                    _returnResponse.postValue(ReturnResponse(message= response.message().toString(),status = response.code()))
+                }else{
+                    if(!responseBody.success){
+                        _returnResponse.postValue(ReturnResponse(message= responseBody.message,status = responseBody.status))
+                    }else{
                         responseBody.apply {
                             login(UserModel(
                                 userId = result.userId,
@@ -50,12 +55,11 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
                             _returnResponse.postValue(ReturnResponse(message= responseBody.message,status = responseBody.status))
                         }
                     }
-                }else{
-                    _returnResponse.postValue(ReturnResponse(message= response.message().toString(),status = response.code()))
                 }
             }
 
             override fun onFailure(call: Call<LoginRes>, t: Throwable) {
+                _showLoading.value = false
                 _returnResponse.postValue(ReturnResponse(message= t.message.toString(),status = 500))
             }
         })

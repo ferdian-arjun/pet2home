@@ -26,6 +26,7 @@ import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.camera.LensCameraActivity
 import com.capstone.pet2home.ui.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tapadoo.alerter.Alerter
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        alertFromLoginActivity()
         setupViewModel()
 
         if (!allPermissionsGranted()) {
@@ -100,6 +102,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun alertFromLoginActivity() {
+        val message = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE_ALERT)
+        if(message != null){
+            Alerter.create(this)
+                .setTitle(getString(R.string.success))
+                .setText(message)
+                .setBackgroundColorRes(R.color.teal_200)
+                .setDuration(1500)
+                .setIcon(R.drawable.ic_info_24)
+                .show()
+        }
     }
 
     private fun setupViewModel() {

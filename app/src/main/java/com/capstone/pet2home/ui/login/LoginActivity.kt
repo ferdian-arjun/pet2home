@@ -1,10 +1,11 @@
 package com.capstone.pet2home.ui.login
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.datastore.core.DataStore
@@ -12,13 +13,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.MainActivity
+import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivityLoginBinding
-import com.capstone.pet2home.emailFormat
-import com.capstone.pet2home.helper.isEmailNotValid
+import com.capstone.pet2home.helper.ValidationHelper
 import com.capstone.pet2home.model.UserModel
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.register.RegisterActivity
+import com.tapadoo.alerter.Alerter
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
@@ -29,16 +31,45 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var user: UserModel
+    private val validationHelper: ValidationHelper = ValidationHelper()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+        binding.btnLogin.isEnabled = false
 
-        setMyButtonEnable()
+        alertFromRegisterActivity()
+        focusListener()
         buttonListener()
         setupViewModel()
         setupAction()
+    }
+
+    private fun alertFromRegisterActivity() {
+        val message = intent.getStringExtra(EXTRA_MESSAGE_ALERT)
+        if(message != null){
+            Alerter.create(this@LoginActivity)
+                .setTitle(getString(R.string.success))
+                .setText(message)
+                .setBackgroundColorRes(R.color.teal_200)
+                .setDuration(1500)
+                .setIcon(R.drawable.ic_info_24)
+                .show()
+        }
+    }
+
+    private fun focusListener() {
+        binding.edtEmail.addTextChangedListener {
+            binding.layoutEmail.helperText = validationHelper.validEmail(binding.edtEmail.text.toString())
+            enableButton()
+        }
+
+        binding.edtPassword.addTextChangedListener {
+            binding.layoutPassword.helperText = validationHelper.validPassword(binding.edtPassword.text.toString())
+            enableButton()
+        }
     }
 
     private fun buttonListener(){
@@ -48,23 +79,13 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setMyButtonEnable(){
-        binding.edtEmail.addTextChangedListener(onTextChanged = { _, _, _, _ ->
-            enableButton()
-        })
-        binding.edtPassword.addTextChangedListener(onTextChanged = { _, _, _, _ ->
-            enableButton()
-        })
-    }
-
     private fun enableButton() {
-        val email = binding.edtEmail.text
-        val password = binding.edtPassword.text
+        val validEmail = binding.layoutEmail.helperText == null
+        val validPassword = binding.layoutPassword.helperText == null
+        val textEmail = !binding.edtEmail.text.isNullOrBlank()
+        val textPassword = !binding.edtPassword.text.isNullOrBlank()
 
-        binding.btnLogin.isEnabled =
-            password != null && email != null && binding.edtPassword.text.toString().length >= 6 && emailFormat(
-                binding.edtEmail.text.toString()
-            )
+        binding.btnLogin.isEnabled = (validEmail && validPassword && textEmail && textPassword)
     }
 
     private fun setupViewModel() {
@@ -73,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
         )[LoginViewModel::class.java]
 
         loginViewModel.getUser().observe(this) { user -> this.user = user }
+        loginViewModel.showLoading.observe(this) {showLoading(it)}
     }
 
 
@@ -82,40 +104,57 @@ class LoginActivity : AppCompatActivity() {
                 val email = edtEmail.text.toString()
                 val password = edtPassword.text.toString()
 
-                if (email.isNotEmpty() && !email.isEmailNotValid() && password.isNotEmpty() && password.length > 5){
-                    val jsonObject = JSONObject()
-                    jsonObject.put(EMAIL, email)
-                    jsonObject.put(PASSWORD, password)
-                    val jsonObjectString = jsonObject.toString()
-                    val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+                val jsonObject = JSONObject()
+                jsonObject.put(EMAIL, email)
+                jsonObject.put(PASSWORD, password)
+                val jsonObjectString = jsonObject.toString()
+                val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
 
-                    loginViewModel.loginUser(requestBody)
+                loginViewModel.loginUser(requestBody)
 
-                    loginViewModel.returnResponse.observe(this@LoginActivity){
-                        if(it.status == 200){
-                            Toast.makeText(this@LoginActivity, it.message, Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
-                        }else{
-                            AlertDialog.Builder(this@LoginActivity).apply {
-                                setTitle(it.status)
-                                setMessage(it.message)
-                                create()
-                                show()
-                            }
+
+                loginViewModel.returnResponse.observe(this@LoginActivity){
+                    if(it.status == 200){
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        intent.putExtra(EXTRA_MESSAGE_ALERT,it.message)
+                        startActivity(intent)
+                        finish()
+                    }else{
+                        if(loginViewModel.showLoading.value == false){
+                            Alerter.create(this@LoginActivity)
+                                .setTitle(getString(R.string.failed_login))
+                                .setText(it.message)
+                                .setBackgroundColorRes(R.color.red)
+                                .setDuration(1500)
+                                .setIcon(R.drawable.ic_error)
+                                .show()
                         }
                     }
-
                 }
             }
         }
     }
 
-    companion object {
-        val EMAIL = "email"
-        val PASSWORD = "password"
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        } else {
+            binding.progressBar.visibility = View.GONE
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        }
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
+    companion object {
+        const val EMAIL = "email"
+        const val PASSWORD = "password"
+        const val EXTRA_MESSAGE_ALERT = "extra_message_alert"
     }
 }
+

@@ -75,7 +75,9 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnLogout.setOnClickListener {
             settingsViewModel.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra(LoginActivity.EXTRA_MESSAGE_ALERT,getString(R.string.success_logout))
+            startActivity(intent)
             finish()
         }
     }

@@ -8,9 +8,9 @@
     <string name="input_email">Masukkan Email…</string>
     <string name="input_password">Masukkan Password…</string>
     <string name="input_name">Masukkan nama kamu…</string>
-    <string name="don_t_have_an_account">Tidak punya akun ?</string>
+    <string name="don_t_have_an_account">Tidak punya akun?</string>
     <string name="register">Daftar</string>
-    <string name="already_have_an_account">Sudah mempunyai akun ?</string>
+    <string name="already_have_an_account">Sudah mempunyai akun?</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Beranda</string>
     <string name="title_lens">Scan</string>
@@ -93,5 +93,7 @@
     <string name="text_update_profile">Perbarui Profil</string>
     <string name="failed_login">Gagal Login</string>
     <string name="failed_register">Gagal Register</string>
+    <string name="create_your_account">Buat akun kamu</string>
+    <string name="login_to_your_account">Masuk dengan  akun kamu</string>
 
 </resources>
