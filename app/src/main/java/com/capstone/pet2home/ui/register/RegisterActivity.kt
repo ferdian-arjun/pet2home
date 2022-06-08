@@ -141,7 +141,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
     companion object {
-        private const val FULL_NAME = "fullname"
+        private const val FULL_NAME = "username"
         private const val EMAIL = "email"
         private const val PASSWORD = "password"
 

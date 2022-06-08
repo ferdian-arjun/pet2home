@@ -36,23 +36,30 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
         service.enqueue(object : Callback<LoginRes> {
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                 _showLoading.value = false
-                val responseBody = response.body()
-                if(responseBody == null){
-                    _returnResponse.postValue(ReturnResponse(message= response.message().toString(),status = response.code()))
-                }else{
-                    if(!responseBody.success){
-                        _returnResponse.postValue(ReturnResponse(message= responseBody.message,status = responseBody.status))
-                    }else{
-                        responseBody.apply {
-                            login(UserModel(
-                                userId = result.userId,
-                                email = result.email,
-                                fullName = result.fullname,
-                                token = result.token,
-                                isLogin = true
-                            ))
+                if(response.code() == 401){
+                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = "Login failed. Wrong email or password!"))
+                }else {
+                    val responseBody = response.body()
+                    if(responseBody == null) {
+                        _returnResponse.postValue(ReturnResponse(message = response.message()
+                            .toString(), status = response.code()))
+                    } else {
+                        if(!responseBody.success) {
+                            _returnResponse.postValue(ReturnResponse(message = responseBody.message,
+                                status = responseBody.status))
+                        } else {
+                            responseBody.apply {
+                                login(UserModel(
+                                    userId = result.userId,
+                                    email = result.email,
+                                    fullName = result.username,
+                                    token = result.token,
+                                    isLogin = true
+                                ))
 
-                            _returnResponse.postValue(ReturnResponse(message= responseBody.message,status = responseBody.status))
+                                _returnResponse.postValue(ReturnResponse(message = responseBody.message,
+                                    status = responseBody.status))
+                            }
                         }
                     }
                 }
@@ -60,7 +67,7 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
 
             override fun onFailure(call: Call<LoginRes>, t: Throwable) {
                 _showLoading.value = false
-                _returnResponse.postValue(ReturnResponse(message= t.message.toString(),status = 500))
+                _returnResponse.postValue(ReturnResponse(message = t.message.toString(), status = 500))
             }
         })
     }
