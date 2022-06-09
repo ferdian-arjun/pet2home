@@ -274,5 +274,7 @@ class PostEditActivity : AppCompatActivity() {
         const val CAMERA_X_RESULT = 200
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 20
+        const val TAG = "PostEditActivity"
+        const val EXTRA_ID_POST = "extra_id_post"
     }
 }

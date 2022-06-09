@@ -100,6 +100,11 @@
     <string name="failed">Ops</string>
     <string name="man">Man</string>
     <string name="woman">Woman</string>
+    <string name="title_post">Title Post</string>
+    <string name="title_breed">Title breed</string>
+    <string name="title_date">Post : Jan, 21 Feb 2022</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_delete">Delete</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

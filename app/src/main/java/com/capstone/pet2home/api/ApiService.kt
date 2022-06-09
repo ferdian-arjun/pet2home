@@ -1,9 +1,6 @@
 package com.capstone.pet2home.api
 
-import com.capstone.pet2home.api.response.GetUserRes
-import com.capstone.pet2home.api.response.LoginRes
-import com.capstone.pet2home.api.response.RegisterRes
-import com.capstone.pet2home.api.response.StandardRes
+import com.capstone.pet2home.api.response.*
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.BIRTH_DATE
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.FULL_NAME
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.EMAIL
@@ -50,4 +47,10 @@ interface ApiService{
         @Header("x-access-token") token: String,
         @Body requestBody: RequestBody
     ): Call<StandardRes>
+
+    @GET("/profile/pet/{id}")
+    fun getPetByUser(
+        @Path("id") userId : String,
+        @Header("x-access-token") token: String
+    ): Call<GetPetByUserRes>
 }

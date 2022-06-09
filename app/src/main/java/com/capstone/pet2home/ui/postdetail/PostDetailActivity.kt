@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.annotation.StringRes
 import com.capstone.pet2home.R
 import com.capstone.pet2home.databinding.ActivityLensBinding
 import com.capstone.pet2home.databinding.ActivityPostDetailBinding
@@ -23,5 +24,10 @@ class PostDetailActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener{
             finish()
         }
+    }
+
+    companion object {
+        const val TAG = "PostDetailActivity"
+        const val EXTRA_ID_POST = "extra_id_post"
     }
 }
