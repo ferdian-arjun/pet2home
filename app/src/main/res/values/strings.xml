@@ -97,6 +97,9 @@
     <string name="login_to_your_account">Login to your account</string>
     <string name="success">Success</string>
     <string name="success_logout">Success Logout</string>
+    <string name="failed">Ops</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

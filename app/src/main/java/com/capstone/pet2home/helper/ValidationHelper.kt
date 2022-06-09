@@ -35,4 +35,12 @@ class ValidationHelper {
         }
         return null
     }
+
+    fun validPhoneNumber(value: String): String? {
+        if(!value.matches("^(^\\+62|62|^08)(\\d{3,4}-?){2}\\d{3,4}\$".toRegex()))
+        {
+            return "Invalid Phone Number"
+        }
+        return null
+    }
 }

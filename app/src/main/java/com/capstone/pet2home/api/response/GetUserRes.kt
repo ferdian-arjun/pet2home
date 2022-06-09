@@ -14,7 +14,10 @@ data class GetUserRes(
 	val message: String,
 
 	@field:SerializedName("status")
-	val status: Int
+	val status: Int,
+
+	@field:SerializedName("userpic")
+	val userpic: String,
 )
 
 data class DataItem(
@@ -53,7 +56,10 @@ data class DataItem(
 	val username: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("gender")
+	val gender: String
 )
 
 data class ResultData(
