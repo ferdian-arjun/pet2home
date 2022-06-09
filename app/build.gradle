@@ -25,7 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug{
-            buildConfigField ("String", "MAPS_API_KEY", "\"AIzaSyDqYJGd8XBbcR5cBIa6gPxFBYqXd-r4_TQ\"")
+            buildConfigField ("String", "MAPS_API_KEY", "\"AIzaSyBNhAA52fB8MDM1ZwobRwY8H66OmXQKpqs\"")
         }
     }
 
@@ -65,9 +65,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
-    implementation 'androidx.room:room-ktx:2.4.0-rc01'
-    kapt 'androidx.room:room-compiler:2.4.0-rc01'
-    implementation 'androidx.room:room-paging:2.4.0-rc01'
+    implementation 'androidx.room:room-ktx:2.5.0-alpha02'
+    kapt 'androidx.room:room-compiler:2.5.0-alpha02'
+    implementation 'androidx.room:room-paging:2.5.0-alpha02'
 
     //camera
     def camerax_version = "1.2.0-alpha02"
