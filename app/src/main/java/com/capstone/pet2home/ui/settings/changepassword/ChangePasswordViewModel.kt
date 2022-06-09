@@ -1,18 +1,20 @@
-package com.capstone.pet2home.ui.login
+package com.capstone.pet2home.ui.settings.changepassword
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.capstone.pet2home.api.ApiConfig
-import com.capstone.pet2home.api.response.LoginRes
+import com.capstone.pet2home.api.response.StandardRes
 import com.capstone.pet2home.helper.ReturnResponse
 import com.capstone.pet2home.model.UserModel
 import com.capstone.pet2home.preference.UserPreference
-import kotlinx.coroutines.launch
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(private val pref: UserPreference) : ViewModel() {
+class ChangePasswordViewModel(private val pref: UserPreference) : ViewModel() {
 
     private val _showLoading = MutableLiveData<Boolean>()
     val showLoading: LiveData<Boolean> = _showLoading
@@ -24,20 +26,15 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
         return pref.getUser().asLiveData()
     }
 
-    fun login(user: UserModel) {
-        viewModelScope.launch {
-            pref.login(user)
-        }
-    }
+    fun sendData(user_id: String, token: String, requestBody: RequestBody) {
 
-    fun loginUser(requestBody: RequestBody) {
         _showLoading.value = true
-        val service = ApiConfig.getApiService().login(requestBody)
-        service.enqueue(object : Callback<LoginRes> {
-            override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
+        val service = ApiConfig.getApiService().changePassword(id = user_id, token = token, requestBody = requestBody)
+        service.enqueue(object : Callback<StandardRes> {
+            override fun onResponse(call: Call<StandardRes>, response: Response<StandardRes>) {
                 _showLoading.value = false
-                if(response.code() == 401){
-                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = "Login failed. Wrong email or password!"))
+                if(response.code() == 502){
+                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.message()))
                 }else {
                     val responseBody = response.body()
                     if(responseBody == null) {
@@ -46,31 +43,21 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel() {
                     } else {
                         if(!responseBody.success) {
                             _returnResponse.postValue(ReturnResponse(message = responseBody.message,
-                                status = responseBody.status))
+                                status = 400))
                         } else {
                             responseBody.apply {
-                                login(UserModel(
-                                    userId = result.userId,
-                                    email = result.email,
-                                    fullName = result.username,
-                                    token = result.token,
-                                    isLogin = true
-                                ))
-
-                                _returnResponse.postValue(ReturnResponse(message = responseBody.message,
-                                    status = responseBody.status))
+                                _returnResponse.postValue(ReturnResponse(message = message,
+                                    status = status))
                             }
                         }
                     }
                 }
             }
 
-            override fun onFailure(call: Call<LoginRes>, t: Throwable) {
+            override fun onFailure(call: Call<StandardRes>, t: Throwable) {
                 _showLoading.value = false
                 _returnResponse.postValue(ReturnResponse(message = t.message.toString(), status = 500))
             }
         })
     }
 }
-
-

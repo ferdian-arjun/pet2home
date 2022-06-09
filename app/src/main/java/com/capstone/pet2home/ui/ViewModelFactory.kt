@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.login.LoginViewModel
+import com.capstone.pet2home.ui.profile.ProfileViewModel
 import com.capstone.pet2home.ui.register.RegisterViewModel
 import com.capstone.pet2home.ui.settings.SettingsViewModel
+import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordViewModel
+import com.capstone.pet2home.ui.settings.editprofile.EditProfileViewModel
 
 class ViewModelFactory(private val pref: UserPreference, private val context: Context): ViewModelProvider.NewInstanceFactory() {
 
@@ -27,6 +30,15 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
                 SettingsViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
+                EditProfileViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(ChangePasswordViewModel::class.java) -> {
+                ChangePasswordViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

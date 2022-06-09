@@ -25,12 +25,17 @@ class RegisterViewModel(private val pref: UserPreference) : ViewModel() {
         val service = ApiConfig.getApiService().register(requestBody)
         service.enqueue(object : Callback<RegisterRes> {
             override fun onResponse(call: Call<RegisterRes>, response: Response<RegisterRes>) {
-                val responseBody = response.body()
-                if(responseBody != null){
-                    _returnResponse.postValue(ReturnResponse(status = responseBody.status, message = responseBody.message))
+                if(response.code() == 400){
+                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = "Email has been taken. Try with another email"))
                 }else{
-                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.message()))
+                    val responseBody = response.body()
+                    if(responseBody != null){
+                        _returnResponse.postValue(ReturnResponse(status = responseBody.status, message = responseBody.message))
+                    }else{
+                        _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.message()))
+                    }
                 }
+
                 _showLoading.value = false
             }
 
