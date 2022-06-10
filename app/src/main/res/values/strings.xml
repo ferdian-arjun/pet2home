@@ -106,6 +106,7 @@
     <string name="text_edit" translatable="false">Edit</string>
     <string name="text_delete">Delete</string>
     <string name="successfully_deleted" translatable="false">Successfully deleted</string>
+    <string name="successfull_update">Post successfully updates</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

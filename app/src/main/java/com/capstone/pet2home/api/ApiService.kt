@@ -10,8 +10,8 @@ import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.LOCATION
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.TITLE
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.WHATSAPP
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.BIRTH_DATE
-import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.FULL_NAME
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.EMAIL
+import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.FULL_NAME
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.GENDER
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.PHONE_NUMBER
 import okhttp3.MultipartBody
@@ -62,11 +62,33 @@ interface ApiService{
         @Header("x-access-token") token: String
     ): Call<GetPetByUserRes>
 
+    @GET("/getPetWith/{id}")
+    fun getPet(
+        @Path("id") petId : String,
+        @Header("x-access-token") token: String
+    ): Call<GetPetByUserRes>
+
     @Multipart
     @POST("/postPet")
     fun createPost(
         @Header("x-access-token") token: String,
         @Part file: MultipartBody.Part,
+        @Part(DESCRIPTION) description: RequestBody,
+        @Part(INSTAGRAM) instagram: RequestBody,
+        @Part(AGE) age: RequestBody,
+        @Part(ID_USER) idUser: RequestBody,
+        @Part(TITLE) title: RequestBody,
+        @Part(BREED) breed: RequestBody,
+        @Part(LOCATION) location: RequestBody,
+        @Part(WHATSAPP) whatsApp: RequestBody,
+    ): Call<StandardRes>
+
+    @Multipart
+    @PUT("/post/update/{id}")
+    fun updatePost(
+        @Path("id") id : String,
+        @Header("x-access-token") token: String,
+        @Part file: MultipartBody.Part? = null,
         @Part(DESCRIPTION) description: RequestBody,
         @Part(INSTAGRAM) instagram: RequestBody,
         @Part(AGE) age: RequestBody,
