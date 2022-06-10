@@ -1,14 +1,17 @@
 package com.capstone.pet2home.ui.profile
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.api.response.GetPetByUserRes
 import com.capstone.pet2home.api.response.GetUserRes
+import com.capstone.pet2home.api.response.StandardRes
 import com.capstone.pet2home.helper.ReturnResponse
 import com.capstone.pet2home.model.UserModel
 import com.capstone.pet2home.preference.UserPreference
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,5 +95,34 @@ class ProfileViewModel(private val pref: UserPreference) : ViewModel() {
                 _returnResponse.postValue(ReturnResponse(message = t.message.toString(), status = 500))
             }
         })
+    }
+
+    fun deletePostApi(postId: String, token: String){
+        _showLoading.value = true
+        val client = ApiConfig.getApiService().deletePost(postId = postId, token = token)
+        client.enqueue(object : Callback<StandardRes>{
+            override fun onResponse(call: Call<StandardRes>, response: Response<StandardRes>) {
+                if(response.code() == 400){
+                    _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.message()))
+                }else{
+                    val responseBody = response.body()
+                    if(responseBody != null){
+                        if(responseBody.success){
+                            _returnResponse.postValue(ReturnResponse(status = responseBody.status, message = "Successfully deleted"))
+                        }
+                    }else{
+                        _returnResponse.postValue(ReturnResponse(status = response.code(), message = response.body()?.error.toString()))
+                    }
+                }
+
+                _showLoading.value = false
+            }
+
+            override fun onFailure(call: Call<StandardRes>, t: Throwable) {
+                _returnResponse.postValue(ReturnResponse(status = 500, message = t.message.toString()))
+                _showLoading.value = false
+            }
+        })
+
     }
 }

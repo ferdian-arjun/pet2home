@@ -1,6 +1,14 @@
 package com.capstone.pet2home.api
 
 import com.capstone.pet2home.api.response.*
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.AGE
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.BREED
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.DESCRIPTION
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.ID_USER
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.INSTAGRAM
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.LOCATION
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.TITLE
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.WHATSAPP
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.BIRTH_DATE
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.FULL_NAME
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.EMAIL
@@ -53,4 +61,25 @@ interface ApiService{
         @Path("id") userId : String,
         @Header("x-access-token") token: String
     ): Call<GetPetByUserRes>
+
+    @Multipart
+    @POST("/postPet")
+    fun createPost(
+        @Header("x-access-token") token: String,
+        @Part file: MultipartBody.Part,
+        @Part(DESCRIPTION) description: RequestBody,
+        @Part(INSTAGRAM) instagram: RequestBody,
+        @Part(AGE) age: RequestBody,
+        @Part(ID_USER) idUser: RequestBody,
+        @Part(TITLE) title: RequestBody,
+        @Part(BREED) breed: RequestBody,
+        @Part(LOCATION) location: RequestBody,
+        @Part(WHATSAPP) whatsApp: RequestBody,
+    ): Call<StandardRes>
+
+    @DELETE("/post/delete/{id}")
+    fun deletePost(
+        @Path("id") postId : String,
+        @Header("x-access-token") token: String
+    ): Call<StandardRes>
 }

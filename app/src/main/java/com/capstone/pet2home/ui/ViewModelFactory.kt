@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.login.LoginViewModel
+import com.capstone.pet2home.ui.postadd.PostAddViewModel
 import com.capstone.pet2home.ui.profile.ProfileViewModel
 import com.capstone.pet2home.ui.register.RegisterViewModel
 import com.capstone.pet2home.ui.settings.SettingsViewModel
@@ -39,6 +40,9 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(ChangePasswordViewModel::class.java) -> {
                 ChangePasswordViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(PostAddViewModel::class.java) -> {
+                PostAddViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemRowPostBinding
 import com.capstone.pet2home.helper.withDateFormat
+import com.capstone.pet2home.ui.profile.ProfileFragment
 
 
 class ListPostUserAdapter(
@@ -35,20 +36,20 @@ class ListPostUserAdapter(
         holder.apply {
             tvTitlePost.text = listPost[position].tittle
             tvDatePost.text = listPost[position].createdAt.withDateFormat()
-           // Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
-            Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
+            Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
+           // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(listPost[holder.adapterPosition])
             }
 
             itemView.setOnLongClickListener {
-                onOptionsMenuClicked.onOptionsMenuClicked(position)
+                onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
                 true
             }
 
             btnMenuOption.setOnClickListener {
-                onOptionsMenuClicked.onOptionsMenuClicked(position)
+                onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
             }
 
         }
@@ -61,7 +62,7 @@ class ListPostUserAdapter(
     }
 
     interface OptionsMenuClickListener {
-        fun onOptionsMenuClicked(position: Int)
+        fun onOptionsMenuClicked(data: DataItemPet)
     }
 
     interface OnItemClickCallback {

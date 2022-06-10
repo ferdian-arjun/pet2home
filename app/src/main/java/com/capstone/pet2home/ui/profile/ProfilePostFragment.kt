@@ -22,12 +22,13 @@ import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.postedit.PostEditActivity
 import com.capstone.pet2home.ui.profile.adapter.ListPostUserAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.tapadoo.alerter.Alerter
 import es.dmoral.toasty.Toasty
+
 
 class ProfilePostFragment : Fragment() {
     private var _binding: FragmentProfilePostBinding? = null
     private val binding get() = _binding!!
-    private val listPets = ArrayList<DataItemPet>()
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 
@@ -54,14 +55,15 @@ class ProfilePostFragment : Fragment() {
     }
 
     private fun setPostingUser(pets: List<DataItemPet>) {
+        val listPets = ArrayList<DataItemPet>()
         for (pet in pets){
             listPets.add(pet)
         }
 
         val adapter = ListPostUserAdapter(listPets, object : ListPostUserAdapter.OptionsMenuClickListener{
 
-            override fun onOptionsMenuClicked(position: Int) {
-                bottomSheetDialogShow(position)
+            override fun onOptionsMenuClicked(data: DataItemPet) {
+                bottomSheetDialogShow(data)
             }
         })
 
@@ -77,7 +79,8 @@ class ProfilePostFragment : Fragment() {
         binding.rvPosting.layoutManager = GridLayoutManager(context, 2)
     }
 
-    private fun bottomSheetDialogShow(position: Int) {
+    private fun bottomSheetDialogShow(data: DataItemPet) {
+        val profileViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(requireContext().dataStore),requireContext()))[ProfileViewModel::class.java]
         val view: View = layoutInflater.inflate(R.layout.bottom_sheet_menu_post,null)
         val dialogMenu = BottomSheetDialog(requireContext())
         dialogMenu.setContentView(view)
@@ -89,18 +92,48 @@ class ProfilePostFragment : Fragment() {
 
         btnEdit.setOnClickListener {
             val intent = Intent(activity, PostEditActivity::class.java)
-            intent.putExtra(PostEditActivity.EXTRA_ID_POST,listPets[position].idPost)
+            intent.putExtra(PostEditActivity.EXTRA_ID_POST,data.idPost)
             startActivity(intent)
         }
 
         btnShare.setOnClickListener {
-            Toasty.success(requireContext(), "shere ${listPets[position].idPost}", Toast.LENGTH_LONG,true).show();
+            Toasty.success(requireContext(), "shere ${data.idPost}", Toast.LENGTH_LONG,true).show();
         }
 
         btnDelete.setOnClickListener {
-            Toasty.success(requireContext(), "delete ${listPets[position].idPost}", Toast.LENGTH_LONG,true).show();
-        }
 
+            profileViewModel.getUser().observe(this){
+                profileViewModel.deletePostApi(postId = data.idPost, token = it.token)
+            }
+
+            profileViewModel.returnResponse.observe(this){
+                activity?.recreate()
+                if(it.status == 200){
+                    dialogMenu.hide()
+
+                    Alerter.create(requireActivity())
+                        .setTitle(getString(R.string.success))
+                        .setText(getString(R.string.successfully_deleted))
+                        .setBackgroundColorRes(R.color.teal_200)
+                        .setDuration(1500)
+                        .setIcon(R.drawable.ic_info_24)
+                        .show()
+
+
+                }else{
+                    if(profileViewModel.showLoading.value == false){
+                        Alerter.create(requireActivity())
+                            .setTitle(getString(R.string.failed))
+                            .setText(it.message)
+                            .setBackgroundColorRes(R.color.red)
+                            .setDuration(1500)
+                            .setIcon(R.drawable.ic_error)
+                            .show()
+                    }
+                    dialogMenu.hide()
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

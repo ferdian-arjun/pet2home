@@ -32,6 +32,7 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
     private var totalPost: Int? = 0
+    private var totalFav: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,7 +94,7 @@ class ProfileFragment : Fragment() {
         binding.textUserEmail.text = user.result.data[0]?.email
         binding.textUserFullName.text = user.result.data[0]?.username
         binding.textUserPost.text = totalPost.toString() //example
-        binding.textUserFavorite.text = "2" //example
+        binding.textUserFavorite.text = totalFav.toString() //example
         Glide.with(binding.imageUserAvatar).load(URL_AVATAR + user.result.data[0]?.avatar).circleCrop().into(binding.imageUserAvatar)
     }
 
