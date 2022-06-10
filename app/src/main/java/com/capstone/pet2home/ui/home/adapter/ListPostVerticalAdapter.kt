@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.capstone.pet2home.R
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemPostBinding
 import com.capstone.pet2home.helper.withDateFormat
@@ -28,6 +30,7 @@ class ListPostVerticalAdapter(
         val imageAvatarUser: ImageView = binding.ivAvatarPost
         val fullNameUser: TextView = binding.tvUsernamePost
         val btnMenuOption: View= binding.btnMenuOption
+        val btnFav: View= binding.btnFavorite
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder=
@@ -51,17 +54,21 @@ class ListPostVerticalAdapter(
 
             fullNameUser.text = listPost[position].username
 
-            itemView.setOnClickListener {
+            imagePost.setOnClickListener {
                 onItemClickCallback.onItemClicked(listPost[holder.adapterPosition])
             }
 
-            itemView.setOnLongClickListener {
+            imagePost.setOnLongClickListener {
                 onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
                 true
             }
 
             btnMenuOption.setOnClickListener {
                 onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
+            }
+
+            btnFav.setOnClickListener {
+                btnFav.background = ContextCompat.getDrawable(it.context, R.drawable.ic_favorite)
             }
 
         }

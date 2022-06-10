@@ -114,10 +114,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_location"
                 android:paddingStart="0dp"
-                android:inputType="textMultiLine"
                 android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

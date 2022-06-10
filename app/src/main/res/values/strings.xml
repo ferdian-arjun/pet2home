@@ -106,59 +106,12 @@
     <string name="text_edit" translatable="false">Edit</string>
     <string name="text_delete">Delete</string>
     <string name="successfully_deleted" translatable="false">Successfully deleted</string>
-    <string name="successfull_update">Post successfully updates</string>
+    <string name="successfull_update" translatable="false">Post successfully updates</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
-    <!--Static Data-->
-    <string-array name="data_post_title">
-        <item>Title one</item>
-        <item>Title two</item>
-        <item>Title three</item>
-        <item>Title one</item>
-        <item>Title two</item>
-        <item>Title three</item>
-        <item>Title one</item>
-        <item>Title two</item>
-        <item>Title three</item>
-        <item>Title one</item>
-        <item>Title two</item>
-        <item>Title three</item>
-    </string-array>
-
-    <string-array name="data_post_location">
-        <item>3 Km</item>
-        <item>2 Km</item>
-        <item>1 Km</item>
-        <item>3 Km</item>
-        <item>2 Km</item>
-        <item>1 Km</item>
-        <item>3 Km</item>
-        <item>2 Km</item>
-        <item>1 Km</item>
-        <item>3 Km</item>
-        <item>2 Km</item>
-        <item>1 Km</item>
-    </string-array>
-
-    <integer-array name="data_post_image">
-        <item>@drawable/example1</item>
-        <item>@drawable/example2</item>
-        <item>@drawable/example3</item>
-        <item>@drawable/example1</item>
-        <item>@drawable/example2</item>
-        <item>@drawable/example3</item>
-        <item>@drawable/example1</item>
-        <item>@drawable/example2</item>
-        <item>@drawable/example3</item>
-        <item>@drawable/example1</item>
-        <item>@drawable/example2</item>
-        <item>@drawable/example3</item>
-    </integer-array>
-
 </resources>
 
 

@@ -77,7 +77,9 @@ class PostEditViewModel(private val pref: UserPreference) : ViewModel() {
             title = data[4],
             breed = data[5],
             location = data[6],
-            whatsApp = data[7]
+            whatsApp = data[7],
+            lat = data[8],
+            lon = data[9]
         )
         service.enqueue(object : Callback<StandardRes> {
             override fun onResponse(call: Call<StandardRes>, response: Response<StandardRes>) {

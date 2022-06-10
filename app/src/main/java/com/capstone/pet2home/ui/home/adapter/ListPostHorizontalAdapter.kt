@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemRowPostHomeBinding
+import com.capstone.pet2home.helper.distanceInKm
+import com.capstone.pet2home.helper.roundOffDecimal
 import com.capstone.pet2home.ui.profile.ProfileFragment
 
 class ListPostHorizontalAdapter(
     private val listPost: ArrayList<DataItemPet>,
-    private var onOptionsMenuClicked: OptionsMenuClickListener
+    private var onOptionsMenuClicked: OptionsMenuClickListener,
+    private var latlonCurrent: Array<Double>,
 ) : RecyclerView.Adapter<ListPostHorizontalAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -33,8 +36,15 @@ class ListPostHorizontalAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.apply {
+
+            val getLatPost = if(listPost[position].lat.isNullOrEmpty()) latlonCurrent[0] else listPost[position].lat.trim().toDouble()
+            val getLonPost = if(listPost[position].lon.isNullOrEmpty()) latlonCurrent[1] else listPost[position].lon.trim().toDouble()
+            val distance = distanceInKm(latlonCurrent[0], latlonCurrent[1],getLatPost,getLonPost).roundOffDecimal().toString()
+
+            listPost[holder.adapterPosition].distance = distance
+
             tvTitlePost.text = listPost[position].title
-            tvLocation.text = "< 1 Km"
+            tvLocation.text = distance + "Km"
             Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
            // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
 
@@ -53,6 +63,7 @@ class ListPostHorizontalAdapter(
 
         }
     }
+
 
     override fun getItemCount(): Int = listPost.size
 

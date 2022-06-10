@@ -89,7 +89,10 @@ data class DataItemPet(
 	val username: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("distance")
+	var distance: String
 )
 
 data class ResultDatPet(
