@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui.profile.adapter
+package com.capstone.pet2home.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,34 +8,33 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
-import com.capstone.pet2home.databinding.ItemRowPostBinding
-import com.capstone.pet2home.helper.withDateFormat
+import com.capstone.pet2home.databinding.ItemRowPostHomeBinding
 import com.capstone.pet2home.ui.profile.ProfileFragment
 
-
-class ListPostUserAdapter(
+class ListPostHorizontalAdapter(
     private val listPost: ArrayList<DataItemPet>,
     private var onOptionsMenuClicked: OptionsMenuClickListener
-) : RecyclerView.Adapter<ListPostUserAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ListPostHorizontalAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-
-    class ViewHolder(binding: ItemRowPostBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: ItemRowPostHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         val tvTitlePost: TextView = binding.tvTitlePost
-        val imagePost: ImageView = binding.imagePost
-        val tvDatePost: TextView = binding.tvDatePost
+        val tvLocation: TextView = binding.tvLocationPost
+        val imagePost: ImageView = binding.imgItemPhoto
         val btnMenuOption: View= binding.btnMenuOption
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemRowPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder=
+        ViewHolder(ItemRowPostHomeBinding.inflate(LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.apply {
             tvTitlePost.text = listPost[position].title
-            tvDatePost.text = listPost[position].createdAt.withDateFormat()
+            tvLocation.text = "< 1 Km"
             Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
            // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
 

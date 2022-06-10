@@ -62,6 +62,11 @@ interface ApiService{
         @Header("x-access-token") token: String
     ): Call<GetPetByUserRes>
 
+    @GET("/getallpet")
+    fun getAllPet(
+        @Header("x-access-token") token: String
+    ): Call<GetPetByUserRes>
+
     @GET("/getPetWith/{id}")
     fun getPet(
         @Path("id") petId : String,

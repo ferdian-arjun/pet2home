@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', "BASE_URL", '"http://pet2home.skom.id/"'
-//        buildConfigField 'String', "BASE_URL", '"http://35.209.179.5:3000/"'
+ //       buildConfigField 'String', "BASE_URL", '"http://35.209.179.5:3000/"'
     }
 
     buildTypes {

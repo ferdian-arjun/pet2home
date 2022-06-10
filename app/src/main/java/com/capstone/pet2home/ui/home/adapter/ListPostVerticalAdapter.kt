@@ -1,4 +1,4 @@
-package com.capstone.pet2home.ui.profile.adapter
+package com.capstone.pet2home.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,36 +8,48 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
-import com.capstone.pet2home.databinding.ItemRowPostBinding
+import com.capstone.pet2home.databinding.ItemPostBinding
 import com.capstone.pet2home.helper.withDateFormat
+import com.capstone.pet2home.ui.postedit.PostEditActivity.Companion.URL_IMAGE
 import com.capstone.pet2home.ui.profile.ProfileFragment
 
-
-class ListPostUserAdapter(
+class ListPostVerticalAdapter(
     private val listPost: ArrayList<DataItemPet>,
     private var onOptionsMenuClicked: OptionsMenuClickListener
-) : RecyclerView.Adapter<ListPostUserAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ListPostVerticalAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-
-    class ViewHolder(binding: ItemRowPostBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
         val tvTitlePost: TextView = binding.tvTitlePost
-        val imagePost: ImageView = binding.imagePost
-        val tvDatePost: TextView = binding.tvDatePost
+        val tvCreateTimePost: TextView = binding.tvCreateTimePost
+        val tvDescription: TextView = binding.tvDescriptionPost
+        val imagePost: ImageView = binding.imgItemPhotoPost
+        val imageAvatarUser: ImageView = binding.ivAvatarPost
+        val fullNameUser: TextView = binding.tvUsernamePost
         val btnMenuOption: View= binding.btnMenuOption
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemRowPostBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder=
+        ViewHolder(ItemPostBinding.inflate(LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.apply {
             tvTitlePost.text = listPost[position].title
-            tvDatePost.text = listPost[position].createdAt.withDateFormat()
-            Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
-           // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
+            tvCreateTimePost.text = listPost[position].createdAt.withDateFormat()
+            tvDescription.text = listPost[position].description
+            Glide.with(itemView.context).load(URL_IMAGE + listPost[position].pic).into(imagePost)
+ //           Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
+            if(listPost[position].avatar == null || listPost[position].avatar == "default.png"){
+                Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + "image_default.jpg").circleCrop().into(imageAvatarUser)
+            }else{
+                Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].avatar).circleCrop().into(imageAvatarUser)
+            }
+
+            fullNameUser.text = listPost[position].username
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(listPost[holder.adapterPosition])

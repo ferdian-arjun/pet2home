@@ -101,7 +101,7 @@ class PostDetailActivity : AppCompatActivity() {
         binding.apply {
             Glide.with(ivImagePost).load(URL_IMAGE + data.pic).into(ivImagePost)
             tvCreateDatePost.text = data.createdAt.withDateFormat()
-            tvTitlePost.text = data.tittle
+            tvTitlePost.text = data.title
             tvLocationPost.text = "3 Km (${data.location})" //nanti update
             tvType.text = data.breed
             tvAge.text = data.age

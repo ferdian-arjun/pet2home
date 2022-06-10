@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -380,7 +379,7 @@ class PostAddActivity : AppCompatActivity() {
         const val INSTAGRAM = "insta"
         const val AGE = "age"
         const val ID_USER = "id_user"
-        const val TITLE = "tittle"
+        const val TITLE = "title"
         const val BREED = "breed"
         const val LOCATION = "location"
         const val WHATSAPP = "whatsapp"

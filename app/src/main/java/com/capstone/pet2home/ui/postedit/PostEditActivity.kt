@@ -290,7 +290,7 @@ class PostEditActivity : AppCompatActivity() {
     private fun setDataForm(data: DataItemPet) {
         binding.apply {
             Glide.with(imagePost).load(URL_IMAGE + data.pic).into(imagePost)
-            edtNamaHewan.setText(data.tittle)
+            edtNamaHewan.setText(data.title)
             autoCompleteJenisHewan.setText(data.breed)
             autoCompleteUsia.setText(data.age)
             edtLocation.setText(data.location)
