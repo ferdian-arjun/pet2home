@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
 
     companion object {
+        const val EXTRA_ALERT = "extra_alert"
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
     }
@@ -106,10 +107,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun alertFromLoginActivity() {
         val message = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE_ALERT)
+        val message2 = intent.getStringExtra(EXTRA_ALERT)
         if(message != null){
             Alerter.create(this)
                 .setTitle(getString(R.string.success))
                 .setText(message)
+                .setBackgroundColorRes(R.color.teal_200)
+                .setDuration(1500)
+                .setIcon(R.drawable.ic_info_24)
+                .show()
+        }
+
+        if(message2 != null){
+            Alerter.create(this)
+                .setTitle(getString(R.string.success))
+                .setText(message2)
                 .setBackgroundColorRes(R.color.teal_200)
                 .setDuration(1500)
                 .setIcon(R.drawable.ic_info_24)

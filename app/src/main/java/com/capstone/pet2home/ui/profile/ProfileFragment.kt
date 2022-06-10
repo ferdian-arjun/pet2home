@@ -31,6 +31,8 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    private var totalPost: Int? = 0
+    private var totalFav: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,6 +72,7 @@ class ProfileFragment : Fragment() {
 
         profileViewModel.getUser().observe(viewLifecycleOwner){
             profileViewModel.getUserApi(it.userId, it.token)
+            profileViewModel.getUserPetApi(it.userId, it.token)
         }
 
         profileViewModel.usersData.observe(viewLifecycleOwner){userData ->
@@ -82,14 +85,16 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        profileViewModel.countPostUser.observe(viewLifecycleOwner) { totalPost = it}
+
         profileViewModel.showLoading.observe(viewLifecycleOwner) {showLoading(it)}
     }
 
     private fun setDataUser(user: GetUserRes) {
         binding.textUserEmail.text = user.result.data[0]?.email
         binding.textUserFullName.text = user.result.data[0]?.username
-        binding.textUserPost.text = "24" //example
-        binding.textUserFavorite.text = "2" //example
+        binding.textUserPost.text = totalPost.toString() //example
+        binding.textUserFavorite.text = totalFav.toString() //example
         Glide.with(binding.imageUserAvatar).load(URL_AVATAR + user.result.data[0]?.avatar).circleCrop().into(binding.imageUserAvatar)
     }
 

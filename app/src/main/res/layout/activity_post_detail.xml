@@ -91,7 +91,7 @@
                     android:id="@+id/tv_create_date_post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6 Mei, 2021"
+                    android:text="@string/default_text"
                     android:textAppearance="@style/TextAppearance.App.Body1"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -196,6 +196,7 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="12dp"
+                        android:visibility="gone"
                         tools:ignore="UselessParent">
 
                         <TextView
@@ -285,20 +286,19 @@
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar_post"
                 app:layout_constraintStart_toEndOf="@+id/iv_avatar_post"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar_post"
-                app:layout_constraintVertical_bias="0.25" />
+                app:layout_constraintVertical_bias="0.1" />
 
             <TextView
                 android:id="@+id/tv_fullname_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MarlynWat"
+                android:layout_width="171dp"
+                android:layout_height="19dp"
+                android:layout_marginLeft="12dp"
+                android:text="MarlynWat sdfsdfs sdfsd"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar_post"
-                app:layout_constraintEnd_toEndOf="@+id/tv_username_post"
-                app:layout_constraintStart_toStartOf="@+id/tv_username_post"
-                app:layout_constraintTop_toBottomOf="@+id/tv_username_post"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar_post"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username_post" />
 
             <ImageButton
                 android:id="@+id/btn_contact_whatsapp"

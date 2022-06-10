@@ -95,11 +95,18 @@
     <string name="failed_register" translatable="false">Failed Register</string>
     <string name="create_your_account">Create your account</string>
     <string name="login_to_your_account">Login to your account</string>
-    <string name="success">Success</string>
-    <string name="success_logout">Success Logout</string>
-    <string name="failed">Ops</string>
-    <string name="man">Man</string>
-    <string name="woman">Woman</string>
+    <string name="success" translatable="false">Success</string>
+    <string name="success_logout" translatable="false">Success Logout</string>
+    <string name="failed" translatable="false">Ops</string>
+    <string name="man" translatable="false">Man</string>
+    <string name="woman" translatable="false">Woman</string>
+    <string name="title_post" translatable="false">Title Post</string>
+    <string name="title_breed" translatable="false">Title breed</string>
+    <string name="title_date" translatable="false">title date</string>
+    <string name="text_edit" translatable="false">Edit</string>
+    <string name="text_delete">Delete</string>
+    <string name="successfully_deleted" translatable="false">Successfully deleted</string>
+    <string name="successfull_update">Post successfully updates</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

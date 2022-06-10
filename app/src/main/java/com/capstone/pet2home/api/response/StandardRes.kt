@@ -14,5 +14,8 @@ data class StandardRes(
 	val status: Int,
 
 	@field:SerializedName("destination")
-	val destination: String? = null
+	val destination: String? = null,
+
+	@field:SerializedName("error")
+	val error: String? = null
 )
