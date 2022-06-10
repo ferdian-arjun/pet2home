@@ -7,6 +7,7 @@ import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.login.LoginViewModel
 import com.capstone.pet2home.ui.postadd.PostAddViewModel
+import com.capstone.pet2home.ui.postdetail.PostDetailViewModel
 import com.capstone.pet2home.ui.postedit.PostEditViewModel
 import com.capstone.pet2home.ui.profile.ProfileViewModel
 import com.capstone.pet2home.ui.register.RegisterViewModel
@@ -47,6 +48,9 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(PostEditViewModel::class.java) -> {
                 PostEditViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(PostDetailViewModel::class.java) -> {
+                PostDetailViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
