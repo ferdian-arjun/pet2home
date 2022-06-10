@@ -7,7 +7,7 @@ data class LoginRes(
 	@field:SerializedName("result")
 	val result: Result,
 
-	@field:SerializedName("success")
+	@field:SerializedName("error")
 	val success: Boolean,
 
 	@field:SerializedName("message")
@@ -19,8 +19,8 @@ data class LoginRes(
 
 data class Result(
 
-	@field:SerializedName("fullname")
-	val fullname: String,
+	@field:SerializedName("username")
+	val username: String,
 
 	@field:SerializedName("userId")
 	val userId: String,

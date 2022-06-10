@@ -5,52 +5,29 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_gravity="center"
-    android:layout_margin="8dp"
-    card_view:cardCornerRadius="8dp">
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="252dp">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_item_photo"
+            android:id="@+id/image_post"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="240sp"
+            android:contentDescription="@string/default_text"
             android:scaleType="centerCrop"
-            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic"
-            android:contentDescription="@string/default_text" />
+            tools:src="@tools:sample/backgrounds/scenic" />
 
-        <TextView
-            android:id="@+id/tv_item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:elevation="2dp"
-            android:text="@string/default_text"
-            android:textAppearance="@style/TextAppearance.App.Body1"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            card_view:layout_constraintBottom_toTopOf="@+id/tv_item_description"
-            card_view:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_item_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:drawablePadding="2dp"
-            android:elevation="2dp"
-            android:text="@string/default_text"
-            android:textAppearance="@style/TextAppearance.App.Body1"
-            android:textColor="@android:color/white"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:drawableStartCompat="@drawable/ic_location_on" />
 
         <View
             android:id="@+id/btn_menu_option"
@@ -62,6 +39,46 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintBottom_toBottomOf="@+id/layout1"
+            android:background="@drawable/bg_layout"
+            android:padding="12dp">
+
+
+            <TextView
+                android:id="@+id/tv_title_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_post"
+                android:textAppearance="@style/TextAppearance.App.Headline6"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_date_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_date"
+                android:textAppearance="@style/TextAppearance.App.Body2"
+                card_view:layout_constraintStart_toStartOf="@+id/tv_title_post"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_title_post" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/btn_breed"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="4dp"-->
+<!--                android:src="@drawable/ic_cat"-->
+<!--                card_view:layout_constraintEnd_toEndOf="parent"-->
+<!--                card_view:layout_constraintTop_toTopOf="parent" />-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

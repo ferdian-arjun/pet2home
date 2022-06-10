@@ -16,9 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        //buildConfigField 'String', "BASE_URL", '"https://pet2home-project.herokuapp.com/"'
         buildConfigField 'String', "BASE_URL", '"http://pet2home.skom.id/"'
-
+//        buildConfigField 'String', "BASE_URL", '"http://35.209.179.5:3000/"'
     }
 
     buildTypes {
@@ -57,6 +56,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
 
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
@@ -90,10 +90,6 @@ dependencies {
 
     //place
     implementation 'com.google.android.libraries.places:places:2.6.0'
-
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -35,4 +35,28 @@ class ValidationHelper {
         }
         return null
     }
+
+    fun validPhoneNumber(value: String): String? {
+        if(!value.matches("^(^\\+62|62|^08)(\\d{3,4}-?){2}\\d{3,4}\$".toRegex()))
+        {
+            return "Invalid Phone Number"
+        }
+        return null
+    }
+
+    fun validMaxChar(value: String):  String? {
+        if(value.length > 25)
+        {
+            return "Maximum 25 Character"
+        }
+        return null
+    }
+
+    fun validInstagram(value: String): String? {
+        if(!value.matches("^(?!.*\\.\\.)(?!.*\\.\$)[^\\W][\\w.]{0,29}\$".toRegex()))
+        {
+            return "Invalid Instagram username"
+        }
+        return null
+    }
 }

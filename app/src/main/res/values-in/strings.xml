@@ -91,9 +91,8 @@
     <string name="title_profile">Profil Saya</string>
     <string name="text_update_password">Perbarui Kata Sandi</string>
     <string name="text_update_profile">Perbarui Profil</string>
-    <string name="failed_login">Gagal Login</string>
-    <string name="failed_register">Gagal Register</string>
     <string name="create_your_account">Buat akun kamu</string>
     <string name="login_to_your_account">Masuk dengan  akun kamu</string>
+    <string name="text_delete">Hapus</string>
 
 </resources>
