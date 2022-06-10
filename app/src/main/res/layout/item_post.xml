@@ -59,7 +59,7 @@
             card_view:layout_constraintTop_toBottomOf="@+id/iv_avatar_post">
 
             <ImageView
-                android:id="@+id/img_item_photo"
+                android:id="@+id/img_item_photo_post"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="@string/default_text"
@@ -72,26 +72,43 @@
         <TextView
             android:id="@+id/tv_title_post"
             style="@style/TextAppearance.App.Headline4"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="-8dp"
+            android:layout_marginStart="10dp"
             android:text="@string/default_text"
             android:textStyle="bold"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/cv_images" />
 
         <TextView
-            android:id="@+id/tv_location_post"
-            style="@style/TextAppearance.App.Body1"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_description_post"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:lines="1"
             android:text="@string/default_text"
-            card_view:drawableStartCompat="@drawable/ic_location_on"
             android:textColor="@color/black_text"
+            android:textSize="16sp"
             card_view:drawableTint="@color/black_text"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="@+id/tv_title_post"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_title_post" />
+
+        <TextView
+            android:id="@+id/tv_create_time_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_description_post"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_description_post"
+            tools:text="Created time" />
 
         <View
             android:id="@+id/btn_favorite"
@@ -100,7 +117,7 @@
             android:layout_marginEnd="12dp"
             android:background="@drawable/ic_favorite_border_24"
             android:backgroundTint="@color/black_text"
-            card_view:layout_constraintBottom_toBottomOf="@+id/tv_location_post"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_title_post"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="@+id/tv_title_post" />
 
@@ -112,6 +129,6 @@
             android:background="?android:attr/listDivider"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_location_post" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_create_time_post" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

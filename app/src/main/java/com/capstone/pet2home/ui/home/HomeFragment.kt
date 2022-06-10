@@ -1,6 +1,5 @@
 package com.capstone.pet2home.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.pet2home.R
+import com.capstone.pet2home.api.response.DataItem
 import com.capstone.pet2home.databinding.FragmentHomeBinding
 import com.capstone.pet2home.helper.MarginItemDecoration
 import com.capstone.pet2home.model.Post
 import com.capstone.pet2home.ui.home.adapter.ListPostAdapter
-import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -24,18 +23,22 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val list = ArrayList<Post>()
+    val homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this)[HomeViewModel::class.java]
+        /*val homeViewModel =
+            ViewModelProvider(this)[HomeViewModel::class.java]*/
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
 
         binding.apply {
             btnFilterDog.isSelected = true
@@ -74,29 +77,48 @@ class HomeFragment : Fragment() {
     }
 
     private fun postContent() {
-        list.addAll(listPosting)
+        homeViewModel.listPost.observe(viewLifecycleOwner, { it ->
+        setPostData(it)
+        })
 
         showRecyclerList(binding.rvPostingHorizon, LinearLayoutManager.HORIZONTAL)
         showRecyclerList(binding.rvPostingVertical, LinearLayoutManager.VERTICAL)
     }
 
+    private fun setPostData(postItems: List<DataItem>){
+        val listPost = ArrayList<Post>()
+        for (postItem in postItems){
+            val post = Post(
+                postItem.tittle,
+                postItem.pic,
+                postItem.description,
+                postItem.createdAt,
+                postItem.location
+            )
+            listPost.add(post)
+        }
+        val adapter = ListPostAdapter(listPost)
+        binding.rvPostingVertical.adapter = adapter
+        binding.rvPostingHorizon.adapter = adapter
+    }
+
     private val listPosting: ArrayList<Post> get() {
         //data sample
-        val dataPostTitle = resources.getStringArray(R.array.data_post_title)
+       val dataPostTitle = resources.getStringArray(R.array.data_post_title)
         val dataPostLocation = resources.getStringArray(R.array.data_post_location)
         val dataPhotoImage = resources.obtainTypedArray(R.array.data_post_image)
 
         val listPost = ArrayList<Post>()
-        for (i in dataPostTitle.indices) {
-            val post = Post(dataPostTitle[i],dataPostLocation[i], dataPhotoImage.getResourceId(i, -1))
-            listPost.add(post)
-        }
+        /*for (i in dataPostTitle.indices) {
+           val post = Post(dataPostTitle[i],dataPostLocation[i], dataPhotoImage.getResourceId(i, -1))
+           listPost.add(post)
+        }*/
         return listPost
     }
 
     private fun showRecyclerList(rv: RecyclerView, orientation: Int) {
         rv.layoutManager = LinearLayoutManager(context, orientation,false)
-        rv.adapter = ListPostAdapter(list,
+        /*rv.adapter = ListPostAdapter(list,
             optionsMenuClickListener = object : ListPostAdapter.OptionsMenuClickListener{
                 override fun onOptionsMenuClicked(position: Int) {
                   //  performOptionsMenuClick(position)
@@ -108,7 +130,8 @@ class HomeFragment : Fragment() {
                 }
             },
             rv
-        )
+        )*/
+
 
         if (rv.id == R.id.rv_posting_horizon){
             rv.addItemDecoration(
