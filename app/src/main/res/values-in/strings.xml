@@ -84,5 +84,7 @@
     <string name="unknown_location" translatable="false">Tidak Ada Lokasi</string>
     <string name="text_no_content_post">Posting hewan peliharaan Anda untuk diadopsi</string>
     <string name="text_no_content_fav">Kamu tidak memiliki postingan favorit</string>
+    <string name="textResult">Berdasarkan hasil scan jenis Ras yang dimiliki oleh hewan kamu adalah</string>
+    <string name="your_result">Hasil :</string>
 
 </resources>
