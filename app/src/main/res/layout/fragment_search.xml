@@ -9,7 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="match_parent"
+        android:padding="12dp"
         android:background="@color/white">
 
         <ImageButton
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="@+id/container"
             app:layout_constraintTop_toTopOf="@+id/container"
             app:srcCompat="@drawable/ic_arrow_back_24_primary"
@@ -30,12 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:background="@drawable/bg_border_search"
-            android:paddingStart="8dp"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="4dp"
             android:hint="@string/text_search"
             android:inputType="text"
             android:minHeight="40dp"
+            android:paddingStart="8dp"
+            android:imeOptions="actionSearch"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_back"
@@ -51,12 +53,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_no_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak dI temukan"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/divider_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_search"
+            app:layout_constraintVertical_bias="0.13" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_searching"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_search" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize" />
 
 </RelativeLayout>

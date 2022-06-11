@@ -12,6 +12,7 @@ import com.capstone.pet2home.ui.postdetail.PostDetailViewModel
 import com.capstone.pet2home.ui.postedit.PostEditViewModel
 import com.capstone.pet2home.ui.profile.ProfileViewModel
 import com.capstone.pet2home.ui.register.RegisterViewModel
+import com.capstone.pet2home.ui.search.SearchViewModel
 import com.capstone.pet2home.ui.settings.SettingsViewModel
 import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordViewModel
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileViewModel
@@ -59,6 +60,9 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
                 SplashScreenViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
+                SearchViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
