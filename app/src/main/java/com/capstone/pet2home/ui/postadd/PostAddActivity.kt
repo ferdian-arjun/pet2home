@@ -58,6 +58,7 @@ class PostAddActivity : AppCompatActivity() {
     private var itemsAge: Array<String> = arrayOf("0-6 month","6 month - 1 years", "1 - 2 years", ">2 years")
     private val validationHelper: ValidationHelper = ValidationHelper()
     private var getFile: File? = null
+    private var getLatLong: Array<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +111,7 @@ class PostAddActivity : AppCompatActivity() {
                         val place = Autocomplete.getPlaceFromIntent(data)
                         binding.edtLocation.setText(place.address)
                         Log.i(TAG, "Place: ${place.address} LatLong: ${place.latLng}")
+                        getLatLong = arrayOf(place.latLng.latitude.toString(),place.latLng.longitude.toString())
                     }
                 }
                 AutocompleteActivity.RESULT_ERROR -> {
@@ -254,9 +256,11 @@ class PostAddActivity : AppCompatActivity() {
             val instagram = !edtInstagram.text.isNullOrBlank() && layoutInstagram.helperText == null
             val nomerWhatsapp = !edtWhatshapp.text.isNullOrBlank() && layoutWhatsapp.helperText == null
             val deskripsi = !edtDeskripsi.text .isNullOrBlank() && layoutDeskripsi.helperText == null
+            val lat = !getLatLong?.get(0).isNullOrBlank()
+            val lon = !getLatLong?.get(1).isNullOrBlank()
 
-
-            btnCreatePost.isEnabled = nameHewan && jenisHewan && nomerWhatsapp && deskripsi && usia  && lokasi  && instagram && getFile != null
+            layoutLocation.hint = "${getString(R.string.text_post_location)} (${getLatLong?.get(0)} | ${getLatLong?.get(1)})"
+            btnCreatePost.isEnabled = nameHewan && jenisHewan && nomerWhatsapp && deskripsi && usia  && lokasi  && instagram && lat && lon &&  getFile != null
         }
     }
 
@@ -289,7 +293,8 @@ class PostAddActivity : AppCompatActivity() {
                     val breed = autoCompleteJenisHewan.text.toString().toRequestBody("text/plain".toMediaType())
                     val location = edtLocation.text.toString().toRequestBody("text/plain".toMediaType())
                     val whatsApp = edtWhatshapp.text.toString().toRequestBody("text/plain".toMediaType())
-
+                    val lat = getLatLong?.get(0).toString().toRequestBody("text/plain".toMediaType())
+                    val lon = getLatLong?.get(1).toString().toRequestBody("text/plain".toMediaType())
                     //files
                     val file = reduceFileImage(getFile as File)
                     val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -297,7 +302,7 @@ class PostAddActivity : AppCompatActivity() {
                         "image","post_" + it.userId + file.name,requestImageFile
                     )
 
-                    val data = arrayOf<RequestBody>(description,instagram,age,idUser,title,breed,location,whatsApp)
+                    val data = arrayOf<RequestBody>(description,instagram,age,idUser,title,breed,location,whatsApp,lat,lon)
 
                     postAddViewModel.createPost(token = it.token, image = imageMultipart, data = data)
                 }
@@ -379,9 +384,11 @@ class PostAddActivity : AppCompatActivity() {
         const val INSTAGRAM = "insta"
         const val AGE = "age"
         const val ID_USER = "id_user"
-        const val TITLE = "tittle"
+        const val TITLE = "title"
         const val BREED = "breed"
         const val LOCATION = "location"
         const val WHATSAPP = "whatsapp"
+        const val LAT = "lat"
+        const val LON = "lon"
     }
 }

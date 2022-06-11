@@ -6,7 +6,9 @@ import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.BREED
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.DESCRIPTION
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.ID_USER
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.INSTAGRAM
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.LAT
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.LOCATION
+import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.LON
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.TITLE
 import com.capstone.pet2home.ui.postadd.PostAddActivity.Companion.WHATSAPP
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileActivity.Companion.BIRTH_DATE
@@ -62,6 +64,11 @@ interface ApiService{
         @Header("x-access-token") token: String
     ): Call<GetPetByUserRes>
 
+    @GET("/getallpet")
+    fun getAllPet(
+        @Header("x-access-token") token: String
+    ): Call<GetPetByUserRes>
+
     @GET("/getPetWith/{id}")
     fun getPet(
         @Path("id") petId : String,
@@ -81,6 +88,8 @@ interface ApiService{
         @Part(BREED) breed: RequestBody,
         @Part(LOCATION) location: RequestBody,
         @Part(WHATSAPP) whatsApp: RequestBody,
+        @Part(LON) lon: RequestBody,
+        @Part(LAT) lat: RequestBody
     ): Call<StandardRes>
 
     @Multipart
@@ -97,6 +106,8 @@ interface ApiService{
         @Part(BREED) breed: RequestBody,
         @Part(LOCATION) location: RequestBody,
         @Part(WHATSAPP) whatsApp: RequestBody,
+        @Part(LON) lon: RequestBody,
+        @Part(LAT) lat: RequestBody
     ): Call<StandardRes>
 
     @DELETE("/post/delete/{id}")

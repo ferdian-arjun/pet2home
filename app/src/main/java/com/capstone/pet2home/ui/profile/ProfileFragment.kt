@@ -13,17 +13,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.capstone.pet2home.BuildConfig.BASE_URL
 import com.capstone.pet2home.R
 import com.capstone.pet2home.api.response.GetUserRes
 import com.capstone.pet2home.databinding.FragmentProfileBinding
+import com.capstone.pet2home.preference.UserPreference
+import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.postadd.PostAddActivity
 import com.capstone.pet2home.ui.profile.adapter.ProfileSectionsPagerAdapter
 import com.capstone.pet2home.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.capstone.pet2home.BuildConfig.BASE_URL
-import com.capstone.pet2home.preference.UserPreference
-import com.capstone.pet2home.ui.ViewModelFactory
 import es.dmoral.toasty.Toasty
 
 class ProfileFragment : Fragment() {
@@ -82,6 +82,7 @@ class ProfileFragment : Fragment() {
         profileViewModel.returnResponse.observe(viewLifecycleOwner){
             if(it.status != 200){
                 Toasty.error(requireContext(),it.message, Toast.LENGTH_SHORT, true).show()
+                showLoading(true)
             }
         }
 
@@ -130,6 +131,16 @@ class ProfileFragment : Fragment() {
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
+            binding.apply {
+                imageUserAvatar.visibility = View.INVISIBLE
+                textUserEmail.visibility = View.INVISIBLE
+                textUserFullName.visibility = View.INVISIBLE
+                divider.visibility = View.INVISIBLE
+                textPosting.visibility = View.INVISIBLE
+                textUserPost.visibility = View.INVISIBLE
+                textFavorite.visibility = View.INVISIBLE
+                textUserFavorite.visibility = View.INVISIBLE
+            }
         } else {
             binding.progressBar.visibility = View.GONE
             binding.apply {

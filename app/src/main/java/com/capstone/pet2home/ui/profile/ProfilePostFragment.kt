@@ -50,7 +50,10 @@ class ProfilePostFragment : Fragment() {
         }
 
         profileViewModel.userPetData.observe(viewLifecycleOwner) {
-            if (it != null) setPostingUser(it)
+            showLoading(false)
+            if (it != null){
+                setPostingUser(it)
+            }
         }
     }
 
@@ -59,6 +62,8 @@ class ProfilePostFragment : Fragment() {
         for (pet in pets){
             listPets.add(pet)
         }
+
+        isNoContent(listPets.isEmpty())
 
         val adapter = ListPostUserAdapter(listPets, object : ListPostUserAdapter.OptionsMenuClickListener{
 
@@ -133,6 +138,28 @@ class ProfilePostFragment : Fragment() {
                     dialogMenu.hide()
                 }
             }
+        }
+    }
+
+    private fun isNoContent(isNot: Boolean) {
+        if(isNot){
+            binding.apply {
+                ivNoContent.visibility=View.VISIBLE
+                tvNoContent.visibility=View.VISIBLE
+            }
+        } else {
+            binding.apply {
+                ivNoContent.visibility = View.GONE
+                tvNoContent.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 

@@ -25,14 +25,26 @@ data class DataItemPet(
 	@field:SerializedName("whatsapp")
 	val whatsapp: String,
 
+	@field:SerializedName("role")
+	val role: String,
+
+	@field:SerializedName("gender")
+	val gender: String,
+
 	@field:SerializedName("id_post")
 	val idPost: String,
+
+	@field:SerializedName("birth_date")
+	val birthDate: String,
 
 	@field:SerializedName("description")
 	val description: String,
 
 	@field:SerializedName("created_at")
 	val createdAt: String,
+
+	@field:SerializedName("birth_place")
+	val birthPlace: String,
 
 	@field:SerializedName("lon")
 	val lon: String,
@@ -43,8 +55,17 @@ data class DataItemPet(
 	@field:SerializedName("pic")
 	val pic: String,
 
+	@field:SerializedName("avatar")
+	val avatar: String,
+
+	@field:SerializedName("title")
+	val title: String,
+
 	@field:SerializedName("breed")
 	val breed: String,
+
+	@field:SerializedName("password")
+	val password: String,
 
 	@field:SerializedName("updated_at")
 	val updatedAt: String,
@@ -52,14 +73,26 @@ data class DataItemPet(
 	@field:SerializedName("location")
 	val location: String,
 
-	@field:SerializedName("tittle")
-	val tittle: String,
+	@field:SerializedName("phone_number")
+	val phoneNumber: String,
 
 	@field:SerializedName("age")
 	val age: String,
 
 	@field:SerializedName("lat")
-	val lat: String
+	val lat: String,
+
+	@field:SerializedName("email")
+	val email: String,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("status")
+	val status: String,
+
+	@field:SerializedName("distance")
+	var distance: String
 )
 
 data class ResultDatPet(

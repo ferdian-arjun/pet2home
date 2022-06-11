@@ -34,22 +34,22 @@ class ListPostUserAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.apply {
-            tvTitlePost.text = listPost[position].tittle
+            tvTitlePost.text = listPost[position].title
             tvDatePost.text = listPost[position].createdAt.withDateFormat()
             Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
            // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
 
             itemView.setOnClickListener {
-                onItemClickCallback.onItemClicked(listPost[holder.adapterPosition])
+                onItemClickCallback.onItemClicked(listPost[position])
             }
 
             itemView.setOnLongClickListener {
-                onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
+                onOptionsMenuClicked.onOptionsMenuClicked(listPost[position])
                 true
             }
 
             btnMenuOption.setOnClickListener {
-                onOptionsMenuClicked.onOptionsMenuClicked(listPost[holder.adapterPosition])
+                onOptionsMenuClicked.onOptionsMenuClicked(listPost[position])
             }
 
         }

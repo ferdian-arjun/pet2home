@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.preference.UserPreference
+import com.capstone.pet2home.ui.home.HomeViewModel
 import com.capstone.pet2home.ui.login.LoginViewModel
 import com.capstone.pet2home.ui.postadd.PostAddViewModel
 import com.capstone.pet2home.ui.postdetail.PostDetailViewModel
@@ -14,6 +15,7 @@ import com.capstone.pet2home.ui.register.RegisterViewModel
 import com.capstone.pet2home.ui.settings.SettingsViewModel
 import com.capstone.pet2home.ui.settings.changepassword.ChangePasswordViewModel
 import com.capstone.pet2home.ui.settings.editprofile.EditProfileViewModel
+import com.capstone.pet2home.ui.splashscreen.SplashScreenViewModel
 
 class ViewModelFactory(private val pref: UserPreference, private val context: Context): ViewModelProvider.NewInstanceFactory() {
 
@@ -51,6 +53,12 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(PostDetailViewModel::class.java) -> {
                 PostDetailViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

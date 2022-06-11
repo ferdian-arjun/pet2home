@@ -17,15 +17,7 @@
     <string name="title_settings">Pengaturan</string>
     <string name="title_edit_profile">Edit Profil Saya</string>
     <string name="title_change_password">Ganti Kata Sandi</string>
-    <string name="user_avatar">user_avatar</string>
-    <string name="user_email">marilnwatkns@gmail.com</string>
-    <string name="user_fullName">Marilyn Watkins</string>
-    <string name="text_posting">Posting</string>
-    <string name="default_number">0</string>
-    <string name="default_text">-</string>
     <string name="text_favorite">Favorit</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tab_text_post">Post</string>
     <string name="tab_text_favorite">Favorit</string>
     <string name="text_post_title">Judul</string>
     <string name="text_post_location">Lokasi</string>
@@ -41,12 +33,7 @@
     <string name="title_menu_3">Informasi Lainnya.</string>
     <string name="desc_menu_2">Identifikasi hewan kalian untuk mengetahui jenis ras yang ada pada hewanmu</string>
     <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
-    <string name="menu1">Menu</string>
-    <string name="menu2">Menu2</string>
-    <string name="menu3">Menu3</string>
-    <string name="iconpet2home">IconPet2Home</string>
 
-    <string name="capturimage">capturImage</string>
     <string name="switchcamera">GantiKamera</string>
 
 
@@ -94,5 +81,8 @@
     <string name="create_your_account">Buat akun kamu</string>
     <string name="login_to_your_account">Masuk dengan  akun kamu</string>
     <string name="text_delete">Hapus</string>
+    <string name="unknown_location" translatable="false">Tidak Ada Lokasi</string>
+    <string name="text_no_content_post">Posting hewan peliharaan Anda untuk diadopsi</string>
+    <string name="text_no_content_fav">Kamu tidak memiliki postingan favorit</string>
 
 </resources>

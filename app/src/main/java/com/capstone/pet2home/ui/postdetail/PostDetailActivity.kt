@@ -101,8 +101,12 @@ class PostDetailActivity : AppCompatActivity() {
         binding.apply {
             Glide.with(ivImagePost).load(URL_IMAGE + data.pic).into(ivImagePost)
             tvCreateDatePost.text = data.createdAt.withDateFormat()
-            tvTitlePost.text = data.tittle
-            tvLocationPost.text = "3 Km (${data.location})" //nanti update
+            tvTitlePost.text = data.title
+            if(intent.getStringExtra(EXTRA_DISTANCE).isNullOrEmpty()){
+                tvLocationPost.text = data.location
+            }else{
+                tvLocationPost.text = "${intent.getStringExtra(EXTRA_DISTANCE)} Km  (${data.location})"
+            }
             tvType.text = data.breed
             tvAge.text = data.age
             tvAboutPost.text = data.description
@@ -139,6 +143,7 @@ class PostDetailActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val EXTRA_DISTANCE = "extra_distance"
         const val TAG = "PostDetailActivity"
         const val EXTRA_ID_POST = "extra_id_post"
         const val URL_IMAGE = BuildConfig.BASE_URL + "public/upload/"

@@ -60,6 +60,7 @@ class PostEditActivity : AppCompatActivity() {
     private var itemsAge: Array<String> = arrayOf("0-6 month","6 month - 1 years", "1 - 2 years", ">2 years")
     private val validationHelper: ValidationHelper= ValidationHelper()
     private var getFile: File? = null
+    private var getLatLong: Array<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,6 +113,7 @@ class PostEditActivity : AppCompatActivity() {
                         val place = Autocomplete.getPlaceFromIntent(data)
                         binding.edtLocation.setText(place.address)
                         Log.i(ContentValues.TAG, "Place: ${place.address} LatLong: ${place.latLng}")
+                        getLatLong = arrayOf(place.latLng.latitude.toString(),place.latLng.longitude.toString())
                     }
                 }
                 AutocompleteActivity.RESULT_ERROR -> {
@@ -261,9 +263,11 @@ class PostEditActivity : AppCompatActivity() {
             val instagram = !edtInstagram.text.isNullOrBlank() && layoutInstagram.helperText == null
             val nomerWhatsapp = !edtWhatshapp.text.isNullOrBlank() && layoutWhatsapp.helperText == null
             val deskripsi = !edtDeskripsi.text .isNullOrBlank() && layoutDeskripsi.helperText == null
+            val lat = !getLatLong?.get(0).isNullOrBlank()
+            val lon = !getLatLong?.get(1).isNullOrBlank()
 
-
-            btnUpdatePost.isEnabled = nameHewan && jenisHewan && nomerWhatsapp && deskripsi && usia  && lokasi  && instagram
+            layoutLocation.hint = "${getString(R.string.text_post_location)} (${getLatLong?.get(0)} | ${getLatLong?.get(1)})"
+            btnUpdatePost.isEnabled = nameHewan && jenisHewan && nomerWhatsapp && deskripsi && usia  && lokasi  && instagram && lat && lon
         }
     }
 
@@ -290,13 +294,15 @@ class PostEditActivity : AppCompatActivity() {
     private fun setDataForm(data: DataItemPet) {
         binding.apply {
             Glide.with(imagePost).load(URL_IMAGE + data.pic).into(imagePost)
-            edtNamaHewan.setText(data.tittle)
+            edtNamaHewan.setText(data.title)
             autoCompleteJenisHewan.setText(data.breed)
             autoCompleteUsia.setText(data.age)
             edtLocation.setText(data.location)
             edtInstagram.setText(data.insta)
             edtWhatshapp.setText(data.whatsapp)
             edtDeskripsi.setText(data.description)
+            getLatLong = arrayOf(data.lat, data.lon)
+            layoutLocation.hint = "${getString(R.string.text_post_location)} (${data.lat} | ${data.lon})"
         }
     }
 
@@ -314,8 +320,12 @@ class PostEditActivity : AppCompatActivity() {
                     val breed = autoCompleteJenisHewan.text.toString().toRequestBody("text/plain".toMediaType())
                     val location = edtLocation.text.toString().toRequestBody("text/plain".toMediaType())
                     val whatsApp = edtWhatshapp.text.toString().toRequestBody("text/plain".toMediaType())
+                    val latPost = getLatLong?.get(0)
+                    val lonPost = getLatLong?.get(1)
 
-                    val data = arrayOf<RequestBody>(description,instagram,age,idUser,title,breed,location,whatsApp)
+                    val lat = latPost.toString().toRequestBody("text/plain".toMediaType())
+                    val lon = lonPost.toString().toRequestBody("text/plain".toMediaType())
+                    val data = arrayOf<RequestBody>(description,instagram,age,idUser,title,breed,location,whatsApp,lat,lon)
                     if(getFile != null){
                         val file = reduceFileImage(getFile as File)
                         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -417,5 +427,7 @@ class PostEditActivity : AppCompatActivity() {
         const val TAG = "PostEditActivity"
         const val EXTRA_ID_POST = "extra_id_post"
         const val URL_IMAGE = BuildConfig.BASE_URL + "public/upload/"
+        const val LAT = "lat"
+        const val LON = "lon"
     }
 }

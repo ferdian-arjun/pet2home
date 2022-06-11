@@ -1,12 +1,15 @@
 package com.capstone.pet2home
 
 import android.Manifest
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -39,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_ALERT = "extra_alert"
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION)
         private const val REQUEST_CODE_PERMISSIONS = 10
     }
 
@@ -135,7 +138,9 @@ class MainActivity : AppCompatActivity() {
         )[MainViewModel::class.java]
 
         mainViewModel.getUser().observe(this) { user ->
-            if (user.token.isEmpty()) {
+            user
+            if (user.token.isEmpty() || user.token == "random token") {
+                mainViewModel.logout()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
@@ -158,4 +163,5 @@ class MainActivity : AppCompatActivity() {
             recreate()
         }
     }
+
 }
