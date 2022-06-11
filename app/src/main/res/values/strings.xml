@@ -112,6 +112,8 @@
     <string name="text_no_content_post">Post your pet for adoption</string>
     <string name="text_no_content_fav">You don\'t have a favorite post</string>
     <string name="text_distance" translatable="false"><![CDATA[< 5.0 km]]></string>
+    <string name="textResult">Based on the scan results, the type of race your animal has is</string>
+    <string name="your_result">Your Result :</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.capstone.pet2home">
+    package="com.capstone.pet2home" >
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -22,8 +22,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet2home"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".ui.lens.resuklens.ResultLensActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.settings.changelanguage.ChangeLanguageActivity"
             android:exported="false" />
@@ -32,7 +34,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.capstone.pet2home.ui.postedit.PostEditActivity"
+            android:name=".ui.postedit.PostEditActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -83,9 +85,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
