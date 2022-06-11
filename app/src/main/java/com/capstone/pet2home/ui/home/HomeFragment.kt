@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -18,14 +19,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.util.getColumnIndex
 import com.capstone.pet2home.R
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.FragmentHomeBinding
 import com.capstone.pet2home.helper.MarginItemDecoration
+import com.capstone.pet2home.helper.checkDistance
+import com.capstone.pet2home.helper.convertMeterToKilometer
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.home.adapter.ListPostHorizontalAdapter
 import com.capstone.pet2home.ui.home.adapter.ListPostVerticalAdapter
+import com.capstone.pet2home.ui.login.LoginActivity
 import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -34,7 +39,9 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.tapadoo.alerter.Alerter
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.withTimeout
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -69,6 +76,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getCurrentLocation() {
+        showLoading(true)
         val locationRequeest = LocationRequest()
         locationRequeest.interval = 10000
         locationRequeest.fastestInterval = 50000
@@ -98,6 +106,7 @@ class HomeFragment : Fragment() {
                         binding.tvLocation.text = address
                         if(latLon != null){
                             setupViewModel()
+                        }else{
                         }
                      //   activity?.recreate()
                     }
@@ -115,27 +124,31 @@ class HomeFragment : Fragment() {
         homeViewModel.petsData.observe(viewLifecycleOwner){
             if(it != null) setHorizonPost(it)
             if(it != null) setVerticalPost(it)
+            showLoading(false)
         }
 
         homeViewModel.returnResponse.observe(viewLifecycleOwner){
             if(it.status != 200){
-                Toasty.error(requireContext(),it.message, Toast.LENGTH_SHORT, true).show()
+                Toasty.error(requireContext(),it.message, Toast.LENGTH_LONG, true).show()
+                binding.tvWaitingData.text = it.message
+                binding.progressBar.visibility = View.GONE
             }
         }
 
     }
 
     private fun setVerticalPost(pets: List<DataItemPet>) {
-        val listPets = ArrayList<DataItemPet>()
+        val listPetsVertical = ArrayList<DataItemPet>()
         for (pet in pets){
-            listPets.add(pet)
+            pet.distance =  checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer().toString()
+            listPetsVertical.add(pet)
         }
 
-        listPets.sortByDescending {
+        listPetsVertical.sortByDescending {
             it.createdAt
         }
 
-        val adapter = ListPostVerticalAdapter(listPets, object : ListPostVerticalAdapter.OptionsMenuClickListener{
+        val adapter = ListPostVerticalAdapter(listPetsVertical, object : ListPostVerticalAdapter.OptionsMenuClickListener{
 
             override fun onOptionsMenuClicked(data: DataItemPet) {
                 // bottomSheetDialogShow(data)
@@ -156,12 +169,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun setHorizonPost(pets: List<DataItemPet>) {
-        val listPets = ArrayList<DataItemPet>()
+        val listPetsHorizon = ArrayList<DataItemPet>()
         for (pet in pets){
-            listPets.add(pet)
+            val distancePost = checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer()
+            pet.distance = distancePost.toString()
+            // ambil data < 1 Km
+            if(distancePost < 5){
+                listPetsHorizon.add(pet)
+            }
         }
 
-        val adapter = ListPostHorizontalAdapter(listPets, object : ListPostHorizontalAdapter.OptionsMenuClickListener{
+        if(listPetsHorizon.isEmpty()){
+            binding.tvNoPostAroundYou.visibility = View.VISIBLE
+            binding.ivNoPostAroundYou.visibility = View.VISIBLE
+        }else{
+            binding.tvNoPostAroundYou.visibility = View.GONE
+            binding.ivNoPostAroundYou.visibility = View.GONE
+        }
+
+        listPetsHorizon.sortByDescending {
+            it.createdAt
+        }
+
+        val adapter = ListPostHorizontalAdapter(listPetsHorizon, object : ListPostHorizontalAdapter.OptionsMenuClickListener{
 
             override fun onOptionsMenuClicked(data: DataItemPet) {
                 // bottomSheetDialogShow(data)
@@ -224,6 +254,18 @@ class HomeFragment : Fragment() {
         slideImages.add(SlideModel(R.drawable.baner3))
 
         binding.imageSlider.setImageList(slideImages, ScaleTypes.FIT)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.tvWaitingData.visibility = View.VISIBLE
+            binding.layoutContent.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.tvWaitingData.visibility = View.GONE
+            binding.layoutContent.visibility = View.VISIBLE
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

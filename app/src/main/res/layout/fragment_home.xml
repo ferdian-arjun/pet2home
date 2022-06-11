@@ -8,7 +8,24 @@
     tools:context=".ui.home.HomeFragment"
     >
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/tv_waiting_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="Waiting data..." />
+
     <LinearLayout
+        android:id="@+id/layout_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -35,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:drawableTint="?attr/colorPrimary"
-                android:text="Jakarta Pusat"
+                android:text="@string/unknown_location"
                 android:textAppearance="@style/TextAppearance.App.Headline5"
                 app:drawableLeftCompat="@drawable/ic_location_on"
                 app:layout_constraintStart_toStartOf="@+id/tv_location_label"
@@ -45,8 +62,8 @@
                 android:id="@+id/btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="6dp"
                 android:background="@null"
+                android:padding="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -78,13 +95,12 @@
                     android:id="@+id/image_slider_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp"
                     app:cardUseCompatPadding="true"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.denzcoskun.imageslider.ImageSlider
                         android:id="@+id/image_slider"
@@ -103,24 +119,22 @@
                     android:id="@+id/tv_your_location_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_marginStart="12dp"
                     android:text="@string/text_around_you"
                     android:textAppearance="@style/TextAppearance.App.Headline5"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_detail"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btn_detail" />
+                    app:layout_constraintTop_toBottomOf="@+id/image_slider_card" />
 
-                <ImageButton
-                    android:id="@+id/btn_detail"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@null"
-                    android:drawableTint="?attr/colorPrimary"
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_distance"
+                    android:layout_marginEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_slider_card"
-                    app:srcCompat="@drawable/ic_arrow_forward_24"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_your_location_label"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_your_location_label" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_posting_horizon"
@@ -130,6 +144,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_your_location_label" />
 
+                <ImageView
+                    android:id="@+id/iv_no_post_around_you"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/pets"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_posting_horizon"
+                    app:layout_constraintEnd_toEndOf="@+id/rv_posting_horizon"
+                    app:layout_constraintStart_toStartOf="@+id/rv_posting_horizon"
+                    app:layout_constraintTop_toTopOf="@+id/rv_posting_horizon"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <TextView
+                    android:id="@+id/tv_no_post_around_you"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tidak ada Postingan"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_no_post_around_you"
+                    app:layout_constraintStart_toStartOf="@+id/iv_no_post_around_you"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_no_post_around_you" />
 
                 <LinearLayout
                     android:id="@+id/layout_filter_button"
@@ -170,6 +204,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_posting_vertical"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="6dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +213,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.amar.library.ui.StickyScrollView>
     </LinearLayout>
-
 
 
 </RelativeLayout>

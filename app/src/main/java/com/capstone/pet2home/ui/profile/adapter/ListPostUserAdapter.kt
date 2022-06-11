@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemRowPostBinding
-import com.capstone.pet2home.helper.distanceInKm
-import com.capstone.pet2home.helper.roundOffDecimal
 import com.capstone.pet2home.helper.withDateFormat
 import com.capstone.pet2home.ui.profile.ProfileFragment
 

@@ -1,5 +1,6 @@
 package com.capstone.pet2home.ui.home.adapter
 
+import android.location.Location
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemRowPostHomeBinding
-import com.capstone.pet2home.helper.distanceInKm
+import com.capstone.pet2home.helper.checkDistance
+import com.capstone.pet2home.helper.convertMeterToKilometer
 import com.capstone.pet2home.helper.roundOffDecimal
 import com.capstone.pet2home.ui.profile.ProfileFragment
 
@@ -37,14 +39,11 @@ class ListPostHorizontalAdapter(
 
         holder.apply {
 
-            val getLatPost = if(listPost[position].lat.isNullOrEmpty()) latlonCurrent[0] else listPost[position].lat.trim().toDouble()
-            val getLonPost = if(listPost[position].lon.isNullOrEmpty()) latlonCurrent[1] else listPost[position].lon.trim().toDouble()
-            val distance = distanceInKm(latlonCurrent[0], latlonCurrent[1],getLatPost,getLonPost).roundOffDecimal().toString()
-
-            listPost[holder.adapterPosition].distance = distance
-
+            val distance = checkDistance(latlonCurrent[0], latlonCurrent[1],listPost[position].lat,listPost[position].lon).convertMeterToKilometer()
+            listPost[holder.adapterPosition].distance = distance.toString()
             tvTitlePost.text = listPost[position].title
-            tvLocation.text = distance + "Km"
+            tvLocation.text = distance.toString() + "Km"
+
             Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
            // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)
 

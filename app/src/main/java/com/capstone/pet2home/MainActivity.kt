@@ -138,7 +138,9 @@ class MainActivity : AppCompatActivity() {
         )[MainViewModel::class.java]
 
         mainViewModel.getUser().observe(this) { user ->
-            if (user.token.isEmpty()) {
+            user
+            if (user.token.isEmpty() || user.token == "random token") {
+                mainViewModel.logout()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }

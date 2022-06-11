@@ -17,6 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
             <ImageView
                 android:id="@+id/img_item_photo"
                 android:layout_width="match_parent"
@@ -29,16 +31,28 @@
                 tools:src="@tools:sample/backgrounds/scenic"
                 android:contentDescription="@string/default_text" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:srcCompat="@drawable/bg_card_linear"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"/>
+
             <TextView
                 android:id="@+id/tv_title_post"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:elevation="2dp"
-                android:text="@string/default_text"
+                android:text="@string/text_change_photo"
                 android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
+                android:ellipsize="end"
+                android:singleLine="true"
                 card_view:layout_constraintBottom_toTopOf="@+id/tv_location_post"
                 card_view:layout_constraintStart_toStartOf="parent" />
 
@@ -60,9 +74,10 @@
                 android:id="@+id/btn_menu_option"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:layout_margin="12dp"
                 android:layout_alignParentEnd="true"
+                android:layout_margin="12dp"
                 android:background="@drawable/ic_more_horizon"
+                android:visibility="gone"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
