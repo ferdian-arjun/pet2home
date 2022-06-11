@@ -3,6 +3,7 @@ package com.capstone.pet2home.ui.lens
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
@@ -29,6 +30,7 @@ class LensActivity : AppCompatActivity() {
         binding = ActivityLensBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showLoading(false)
+        showResultView(false)
 
         val myFile = intent?.getSerializableExtra("picture") as File
         val isBackCamera = intent.getBooleanExtra("isBackCamera", true)
@@ -47,8 +49,17 @@ class LensActivity : AppCompatActivity() {
 
         binding.btnUpload.setOnClickListener {
             showLoading(true)
+            Handler(mainLooper).postDelayed({
+                showResultView(true)
+                resultHandler()
+            }, 3000)
         }
     }
+
+    private fun resultHandler() {
+       //TODO: result FROM ML
+    }
+
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
@@ -59,6 +70,18 @@ class LensActivity : AppCompatActivity() {
             binding.tvProgress.visibility = View.GONE
         }
     }
+
+    private fun showResultView(b: Boolean) {
+        if(b){
+            binding.layoutResult.visibility = View.VISIBLE
+            binding.btnUpload.visibility = View.GONE
+            showLoading(false)
+        }else{
+            binding.layoutResult.visibility = View.GONE
+            showLoading(true)
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
@@ -84,5 +107,6 @@ class LensActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+        showLoading(false)
     }
 }

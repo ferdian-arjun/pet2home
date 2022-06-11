@@ -86,5 +86,7 @@
     <string name="text_no_content_fav">Kamu tidak memiliki postingan favorit</string>
     <string name="textResult">Berdasarkan hasil scan jenis Ras yang dimiliki oleh hewan kamu adalah</string>
     <string name="your_result">Hasil :</string>
+    <string name="check_now">Cek Sekarang</string>
+    <string name="unknown">Tidak Diketahui</string>
 
 </resources>
