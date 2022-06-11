@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -99,17 +100,26 @@ class PostDetailActivity : AppCompatActivity() {
 
     private fun setDataPost(data: DataItemPet) {
         binding.apply {
-            Glide.with(ivImagePost).load(URL_IMAGE + data.pic).into(ivImagePost)
+            Glide.with(imgItemPhotoPost).load(URL_IMAGE + data.pic).into(imgItemPhotoPost)
+
             tvCreateDatePost.text = data.createdAt.withDateFormat()
             tvTitlePost.text = data.title
-            if(intent.getStringExtra(EXTRA_DISTANCE).isNullOrEmpty()){
-                tvLocationPost.text = data.location
-            }else{
-                tvLocationPost.text = "${intent.getStringExtra(EXTRA_DISTANCE)} Km  (${data.location})"
-            }
-            tvType.text = data.breed
             tvAge.text = data.age
-            tvAboutPost.text = data.description
+            tvLocationPost.text = data.location
+            tvDescriptionPost.text = data.description
+
+            if(intent.getStringExtra(EXTRA_DISTANCE).isNullOrEmpty()){
+                tvLocationDistance.text = getString(R.string.text_post_location)
+            }else{
+                tvLocationDistance.text = "${intent.getStringExtra(EXTRA_DISTANCE)} Km"
+            }
+
+            if(data.breed == "Cat"){
+                ivBreedAvatar.setBackgroundResource(R.drawable.ic_cat)
+            }else{
+                ivBreedAvatar.setBackgroundResource(R.drawable.ic_dog)
+            }
+
 
             btnContactWhatsapp.apply {
                 isGone = data.whatsapp.isEmpty()
