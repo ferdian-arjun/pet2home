@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.pet2home.api.ApiConfig
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.home.HomeViewModel
+import com.capstone.pet2home.ui.lens.LensViewModel
 import com.capstone.pet2home.ui.login.LoginViewModel
 import com.capstone.pet2home.ui.postadd.PostAddViewModel
 import com.capstone.pet2home.ui.postdetail.PostDetailViewModel
@@ -63,6 +64,9 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
             }
             modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
                 SearchViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(LensViewModel::class.java) -> {
+                LensViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
