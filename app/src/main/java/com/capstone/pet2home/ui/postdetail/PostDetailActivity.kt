@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -141,15 +142,13 @@ class PostDetailActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-//        if (isLoading) {
-//            binding.progressBar.visibility = View.VISIBLE
-//            binding.viewLoading.visibility = View.VISIBLE
-//            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//        } else {
-//            binding.progressBar.visibility = View.GONE
-//            binding.viewLoading.visibility = View.GONE
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//        }
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.scrollView2.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.scrollView2.visibility = View.VISIBLE
+        }
     }
 
     companion object {

@@ -24,9 +24,6 @@
         android:theme="@style/Theme.Pet2home"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".ui.lens.resuklens.ResultLensActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.settings.changelanguage.ChangeLanguageActivity"
             android:exported="false" />
         <activity

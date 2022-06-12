@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.recreate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -19,18 +17,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.util.getColumnIndex
 import com.capstone.pet2home.R
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.FragmentHomeBinding
-import com.capstone.pet2home.helper.MarginItemDecoration
 import com.capstone.pet2home.helper.checkDistance
 import com.capstone.pet2home.helper.convertMeterToKilometer
 import com.capstone.pet2home.preference.UserPreference
 import com.capstone.pet2home.ui.ViewModelFactory
 import com.capstone.pet2home.ui.home.adapter.ListPostHorizontalAdapter
 import com.capstone.pet2home.ui.home.adapter.ListPostVerticalAdapter
-import com.capstone.pet2home.ui.login.LoginActivity
 import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -39,11 +34,8 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.tapadoo.alerter.Alerter
 import es.dmoral.toasty.Toasty
-import kotlinx.coroutines.withTimeout
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -63,7 +55,7 @@ class HomeFragment : Fragment() {
 
         binding.apply {
             btnFilterDog.isSelected = true
-            btnFilterCat.isSelected = true
+            btnFilterCat.isSelected = false
         }
         getCurrentLocation()
 
@@ -249,9 +241,9 @@ class HomeFragment : Fragment() {
     private fun bannerCarousel() {
         val slideImages = ArrayList<SlideModel>()
         //Sample data
-        slideImages.add(SlideModel(R.drawable.baner1))
-        slideImages.add(SlideModel(R.drawable.baner2))
-        slideImages.add(SlideModel(R.drawable.baner3))
+        slideImages.add(SlideModel("https://imgur.com/2Ka6PaN.png"))
+        slideImages.add(SlideModel("https://imgur.com/ctSBm4o.png"))
+        slideImages.add(SlideModel("https://imgur.com/CisDWDA.png"))
 
         binding.imageSlider.setImageList(slideImages, ScaleTypes.FIT)
     }

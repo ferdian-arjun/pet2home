@@ -10,8 +10,13 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,20 +27,20 @@
                 android:id="@+id/img_item_photo_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:background="@color/teal_700"
                 android:adjustViewBounds="true"
+                android:background="@color/teal_700"
                 android:contentDescription="@string/default_text"
+                android:scaleType="fitCenter"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-16dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="112dp"
+                android:background="@drawable/bg_layout"
                 android:paddingHorizontal="12dp"
-                android:background="@drawable/bg_layout">
+                android:paddingTop="12dp"
+                android:paddingBottom="112dp">
 
 
                 <TextView
@@ -120,9 +125,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/description"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/teal_700"
                     android:textStyle="bold"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     app:layout_constraintStart_toStartOf="@+id/tv_location_post"
                     app:layout_constraintTop_toBottomOf="@+id/tv_location_post" />
 
@@ -260,7 +265,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

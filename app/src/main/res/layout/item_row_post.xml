@@ -19,10 +19,11 @@
         <ImageView
             android:id="@+id/image_post"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="240sp"
             android:minHeight="240sp"
             android:contentDescription="@string/default_text"
             android:scaleType="centerCrop"
+            android:background="@drawable/ic_gallery"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
@@ -51,13 +52,17 @@
 
             <TextView
                 android:id="@+id/tv_title_post"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/title_post"
                 android:textAppearance="@style/TextAppearance.App.Headline6"
                 android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/lorem"/>
 
             <TextView
                 android:id="@+id/tv_date_post"
