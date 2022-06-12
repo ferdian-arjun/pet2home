@@ -47,6 +47,7 @@ class PostDetailViewModel(private val pref: UserPreference) : ViewModel() {
                             status = responseBody.status))
                     }else{
                         _dataPost.postValue(responseBody.result.data[0])
+                        getUserApi(responseBody.result.data[0].idUser, token)
                         _returnResponse.postValue(ReturnResponse(message = responseBody.message,
                             status = responseBody.status))
                     }
@@ -80,7 +81,8 @@ class PostDetailViewModel(private val pref: UserPreference) : ViewModel() {
                         _returnResponse.postValue(ReturnResponse(message = responseBody.message,
                             status = responseBody.status))
                     }else{
-                        _dataUser.postValue(responseBody.result.data[0])
+                        var dataUser = responseBody.result.data[0]
+                        _dataUser.postValue(dataUser)
                         _returnResponse.postValue(ReturnResponse(message = responseBody.message,
                             status = responseBody.status))
                     }

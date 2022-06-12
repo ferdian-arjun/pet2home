@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.location.LocationManagerCompat.requestLocationUpdates
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -43,7 +45,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
-    private var latLon: Array<Double>? = null
+    private var latLon: Array<Double>? = arrayOf(0.0,0.0)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,6 +81,23 @@ class HomeFragment : Fragment() {
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
         var addresses:List<Address>
 
+
+//        LocationServices.getFusedLocationProviderClient(requireContext())
+//            .lastLocation.addOnCompleteListener(requireActivity()){ task ->
+//                val location: Location? = task.result
+//                if(location != null) {
+//                    addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+//                    latLon = arrayOf(addresses[0].latitude,addresses[0].latitude)
+//                    val address:String = addresses[0].locality
+//                    binding.tvLocation.text = address
+//                    if(latLon == null){
+//                        latLon = arrayOf(0.0,0.0)
+//                    }
+//                    setupViewModel()
+//                }
+//            }
+
+
         LocationServices.getFusedLocationProviderClient(requireContext())
             .requestLocationUpdates(locationRequeest,object : LocationCallback(){
                 override fun onLocationResult(locationResult: LocationResult?) {
@@ -88,8 +107,8 @@ class HomeFragment : Fragment() {
                     if (locationResult != null && locationResult.locations.size > 0){
                         val locIndex = locationResult.locations.size-1
 
-                        val latitude = locationResult.locations.get(locIndex).latitude
-                        val longitude = locationResult.locations.get(locIndex).longitude
+                        val latitude = locationResult.locations[locIndex].latitude
+                        val longitude = locationResult.locations[locIndex].longitude
 
                         addresses = geocoder.getFromLocation(latitude,longitude,1)
 
@@ -99,6 +118,7 @@ class HomeFragment : Fragment() {
                         if(latLon != null){
                             setupViewModel()
                         }else{
+                            setupViewModel()
                         }
                      //   activity?.recreate()
                     }
@@ -126,6 +146,8 @@ class HomeFragment : Fragment() {
                 binding.progressBar.visibility = View.GONE
             }
         }
+
+        showLoading(false)
 
     }
 

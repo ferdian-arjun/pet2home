@@ -90,16 +90,16 @@ class LensActivity : AppCompatActivity() {
            if(it != null) {
                showResultView(true)
                if(it.error == null){
-                 setDataResult(it.breed, it.presentase)
+                 setDataResult(it.breed, it.percentage)
                }
            }
 
        }
     }
 
-    private fun setDataResult(breed: String?, presentase: String?) {
+    private fun setDataResult(breed: String?, percentage: String?) {
         binding.tvResultRas.text = breed
-        binding.tvResultPresentase.text ="$presentase%"
+        binding.tvResultPresentase.text ="$percentage%"
     }
 
 
