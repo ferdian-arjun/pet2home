@@ -35,6 +35,7 @@
     <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
 
     <string name="switchcamera">GantiKamera</string>
+    <string name="title">Judul</string>
 
 
     <string name="text_change_photo">Ganti Gambar</string>
@@ -45,7 +46,6 @@
     <string name="choose">Pilih Gambar</string>
 
     <string name="posting">Posting</string>
-    <string name="name_pet">Nama Hewan</string>
     <string name="animal_type">Jenis Hewan</string>
     <string name="no_whatsapp">Nomer WhatsApp</string>
     <string name="description">Deskripsi</string>

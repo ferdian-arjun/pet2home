@@ -59,7 +59,7 @@
     <string name="choose">Choose an image</string>
 
     <string name="posting">Posting</string>
-    <string name="name_pet">Animal Name</string>
+    <string name="title">Title</string>
     <string name="animal_type">Animal Type</string>
     <string name="no_whatsapp">Whatsapp Number</string>
     <string name="description">Description</string>

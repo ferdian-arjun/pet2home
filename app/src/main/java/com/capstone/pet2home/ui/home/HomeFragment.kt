@@ -1,15 +1,18 @@
 package com.capstone.pet2home.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -30,12 +33,12 @@ import com.capstone.pet2home.ui.postdetail.PostDetailActivity
 import com.capstone.pet2home.ui.search.SearchFragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
+import com.vmadalin.easypermissions.EasyPermissions
+import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import es.dmoral.toasty.Toasty
 import java.util.*
+import java.util.jar.Manifest
 
 
 class HomeFragment : Fragment() {
@@ -57,9 +60,11 @@ class HomeFragment : Fragment() {
             btnFilterDog.isSelected = true
             btnFilterCat.isSelected = false
         }
-        getCurrentLocation()
 
-      //  setupViewModel()
+
+        //getCurrentLocation()
+
+        setupViewModel()
         bannerCarousel()
         buttonFilterByPet()
         buttonSearch()
@@ -67,8 +72,32 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    @SuppressLint("MissingPermission")
     private fun getCurrentLocation() {
         showLoading(true)
+
+        /*fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        if (hashLocationPermission()){
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                val geocoder = Geocoder(requireContext())
+                val currentLocation = geocoder.getFromLocation(
+                    location.latitude,
+                    location.longitude,
+                    1
+                )
+                val latitude = location.latitude
+                val longitude = location.longitude
+                latLon = arrayOf(latitude, longitude)
+                val address:String = currentLocation[0].locality
+                binding.tvLocation.text = address
+
+                if (latLon != null){
+                    setupViewModel()
+                }
+            }
+        }else{
+            requestLocationPermission()
+        }*/
         val locationRequeest = LocationRequest()
         locationRequeest.interval = 10000
         locationRequeest.fastestInterval = 50000
@@ -79,27 +108,28 @@ class HomeFragment : Fragment() {
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
         var addresses:List<Address>
 
+
         LocationServices.getFusedLocationProviderClient(requireContext())
             .requestLocationUpdates(locationRequeest,object : LocationCallback(){
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    super.onLocationResult(locationResult)
+                override fun onLocationResult(p0: LocationResult) {
+                    p0?.let { super.onLocationResult(it) }
                     LocationServices.getFusedLocationProviderClient(requireContext())
                         .removeLocationUpdates(this)
-                    if (locationResult != null && locationResult.locations.size > 0){
-                        val locIndex = locationResult.locations.size-1
+                    if (p0 != null && p0.locations.size > 0){
+                        val locIndex = p0.locations.size-1
 
-                        val latitude = locationResult.locations.get(locIndex).latitude
-                        val longitude = locationResult.locations.get(locIndex).longitude
+                        val latitude = p0.locations.get(locIndex).latitude
+                        val longitude = p0.locations.get(locIndex).longitude
 
                         addresses = geocoder.getFromLocation(latitude,longitude,1)
 
                         latLon = arrayOf(latitude,longitude)
                         val address:String = addresses[0].locality
                         binding.tvLocation.text = address
-                        if(latLon != null){
+                        /*if(latLon != null){
                             setupViewModel()
                         }else{
-                        }
+                        }*/
                      //   activity?.recreate()
                     }
                 }
@@ -107,6 +137,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViewModel() {
+
         val homeViewModel = ViewModelProvider(this, ViewModelFactory(UserPreference.getInstance(requireContext().dataStore),requireContext()))[HomeViewModel::class.java]
 
         homeViewModel.getUser().observe(viewLifecycleOwner){
@@ -132,7 +163,7 @@ class HomeFragment : Fragment() {
     private fun setVerticalPost(pets: List<DataItemPet>) {
         val listPetsVertical = ArrayList<DataItemPet>()
         for (pet in pets){
-            pet.distance =  checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer().toString()
+           // pet.distance =  checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer().toString()
             listPetsVertical.add(pet)
         }
 
@@ -151,7 +182,7 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(data: DataItemPet) {
                 val intentDetail = Intent(activity, PostDetailActivity::class.java)
                 intentDetail.putExtra(PostDetailActivity.EXTRA_ID_POST, data.idPost)
-                intentDetail.putExtra(PostDetailActivity.EXTRA_DISTANCE, data.distance)
+                //intentDetail.putExtra(PostDetailActivity.EXTRA_DISTANCE, data.distance)
                 startActivity(intentDetail)
             }
         })
@@ -163,12 +194,13 @@ class HomeFragment : Fragment() {
     private fun setHorizonPost(pets: List<DataItemPet>) {
         val listPetsHorizon = ArrayList<DataItemPet>()
         for (pet in pets){
-            val distancePost = checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer()
+            /*val distancePost = checkDistance(latLon?.get(0),latLon?.get(1),pet.lat,pet.lon).convertMeterToKilometer()
             pet.distance = distancePost.toString()
             // ambil data < 1 Km
             if(distancePost < 5){
                 listPetsHorizon.add(pet)
-            }
+            }*/
+            listPetsHorizon.add(pet)
         }
 
         if(listPetsHorizon.isEmpty()){
@@ -188,13 +220,13 @@ class HomeFragment : Fragment() {
             override fun onOptionsMenuClicked(data: DataItemPet) {
                 // bottomSheetDialogShow(data)
             }
-        }, latLon!!)
+        }/*, latLon!!*/)
 
         adapter.setOnItemClickCallback(object : ListPostHorizontalAdapter.OnItemClickCallback{
             override fun onItemClicked(data: DataItemPet) {
                 val intentDetail = Intent(activity, PostDetailActivity::class.java)
                 intentDetail.putExtra(PostDetailActivity.EXTRA_ID_POST, data.idPost)
-                intentDetail.putExtra(PostDetailActivity.EXTRA_DISTANCE, data.distance)
+                //intentDetail.putExtra(PostDetailActivity.EXTRA_DISTANCE, data.distance)
                 startActivity(intentDetail)
             }
         })
@@ -269,4 +301,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
+
+

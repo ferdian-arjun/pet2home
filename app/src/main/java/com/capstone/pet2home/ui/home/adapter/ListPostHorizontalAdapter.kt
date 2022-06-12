@@ -18,7 +18,7 @@ import com.capstone.pet2home.ui.profile.ProfileFragment
 class ListPostHorizontalAdapter(
     private val listPost: ArrayList<DataItemPet>,
     private var onOptionsMenuClicked: OptionsMenuClickListener,
-    private var latlonCurrent: Array<Double>,
+    //private var latlonCurrent: Array<Double>,
 ) : RecyclerView.Adapter<ListPostHorizontalAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -39,10 +39,10 @@ class ListPostHorizontalAdapter(
 
         holder.apply {
 
-            val distance = checkDistance(latlonCurrent[0], latlonCurrent[1],listPost[position].lat,listPost[position].lon).convertMeterToKilometer()
-            listPost[holder.adapterPosition].distance = distance.toString()
+            /*val distance = checkDistance(latlonCurrent[0], latlonCurrent[1],listPost[position].lat,listPost[position].lon).convertMeterToKilometer()
+            listPost[holder.adapterPosition].distance = distance.toString()*/
             tvTitlePost.text = listPost[position].title
-            tvLocation.text ="$distance km"
+            tvLocation.text = /*listPost[position].location*/" km"
 
             Glide.with(itemView.context).load(ProfileFragment.URL_AVATAR + listPost[position].pic).into(imagePost)
            // Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)

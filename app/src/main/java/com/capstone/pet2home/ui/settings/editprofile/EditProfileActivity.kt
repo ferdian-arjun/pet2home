@@ -106,7 +106,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun setDataForm(user: GetUserRes) {
         binding.apply {
-            Glide.with(imageUserAvatar).load(ProfileFragment.URL_AVATAR + user.result.data[0]?.avatar).circleCrop().into(imageUserAvatar)
+            Glide.with(this@EditProfileActivity).load(ProfileFragment.URL_AVATAR + user.result.data[0]?.avatar).circleCrop().into(imageUserAvatar)
             edtFullName.setText(user.result.data[0]?.username)
             edtEmail.setText(user.result.data[0]?.email)
             edtTelp.setText(user.result.data[0]?.phoneNumber)

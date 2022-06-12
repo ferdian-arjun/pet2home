@@ -16,7 +16,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        buildConfigField 'String', "BASE_URL", '"http://pet2home.skom.id/"'
+        //buildConfigField 'String', "BASE_URL", '"http://pet2home.skom.id/"'
         buildConfigField 'String', "BASE_URL", '"http://35.209.179.5:3000/"'
         buildConfigField 'String', "BASE_URL_ML", '"http://35.222.85.126:5000/"'
     }
@@ -91,6 +91,12 @@ dependencies {
 
     //place
     implementation 'com.google.android.libraries.places:places:2.6.0'
+
+    //Easy Permission KTX
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
+    //Location
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

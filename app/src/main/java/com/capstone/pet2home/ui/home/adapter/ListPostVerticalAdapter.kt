@@ -1,11 +1,13 @@
 package com.capstone.pet2home.ui.home.adapter
 
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +15,13 @@ import com.bumptech.glide.Glide
 import com.capstone.pet2home.R
 import com.capstone.pet2home.api.response.DataItemPet
 import com.capstone.pet2home.databinding.ItemPostBinding
+import com.capstone.pet2home.formatDate
 import com.capstone.pet2home.helper.withDateFormat
 import com.capstone.pet2home.ui.postedit.PostEditActivity.Companion.URL_IMAGE
 import com.capstone.pet2home.ui.profile.ProfileFragment
+import java.sql.Time
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ListPostVerticalAdapter(
     private val listPost: ArrayList<DataItemPet>,
@@ -40,11 +46,12 @@ class ListPostVerticalAdapter(
             viewGroup,
             false))
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.apply {
             tvTitlePost.text = listPost[position].title
-            tvCreateTimePost.text = listPost[position].createdAt.withDateFormat()
+            tvCreateTimePost.text = formatDate(listPost[position].createdAt, TimeZone.getDefault().id)
             tvDescription.text = listPost[position].description
             Glide.with(itemView.context).load(URL_IMAGE + listPost[position].pic).into(imagePost)
  //           Glide.with(itemView.context).load("https://source.unsplash.com/720x600/?pet").into(imagePost)

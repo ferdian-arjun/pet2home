@@ -29,7 +29,7 @@ val timeStamp: String = SimpleDateFormat(
 @RequiresApi(Build.VERSION_CODES.O)
 fun formatDate(currentDateString: String, targetTimeZone: String): String {
     val instant = Instant.parse(currentDateString)
-    val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy | HH:mm")
+    val formatter = DateTimeFormatter.ofPattern("HH:mm, dd MMM yyyy  ")
         .withZone(ZoneId.of(targetTimeZone))
     return formatter.format(instant)
 }
