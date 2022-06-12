@@ -76,7 +76,6 @@ class PostDetailActivity : AppCompatActivity() {
             val getPetId = intent.getStringExtra(PostEditActivity.EXTRA_ID_POST)
             if(getPetId != null) {
                 postDetailViewModel.getPetApi(getPetId, it.token)
-                postDetailViewModel.getUserApi(it.userId, it.token)
             }
         }
 

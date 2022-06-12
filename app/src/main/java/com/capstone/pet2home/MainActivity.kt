@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
 
         alertFromLoginActivity()
         setupViewModel()
-
-        if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
-            )
-        }
+//
+//        if (!allPermissionsGranted()) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                REQUIRED_PERMISSIONS,
+//                REQUEST_CODE_PERMISSIONS
+//            )
+//        }
 
         val navView: BottomNavigationView = binding.navView
 
