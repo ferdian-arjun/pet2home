@@ -115,4 +115,17 @@ interface ApiService{
         @Path("id") postId : String,
         @Header("x-access-token") token: String
     ): Call<StandardRes>
+
+
+    @GET("/search")
+    fun searchPost(
+        @Header("x-access-token") token: String,
+        @Query("q") search : String
+    ): Call<GetPetByUserRes>
+
+    @Multipart
+    @POST("/predict")
+    fun getPredictPet(
+        @Part file: MultipartBody.Part
+    ): Call<PredictPetRes>
 }

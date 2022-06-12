@@ -22,16 +22,12 @@ class LensFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val dashboardViewModel =
+        val lensViewModel =
             ViewModelProvider(this).get(LensViewModel::class.java)
 
         _binding = FragmentLensBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

@@ -114,6 +114,10 @@
     <string name="text_distance" translatable="false"><![CDATA[< 5.0 km]]></string>
     <string name="textResult">Based on the scan results, the type of race your animal has is</string>
     <string name="your_result">Your Result :</string>
+    <string name="persentase" translatable="false">Persentase</string>
+    <string name="check_now">Check now</string>
+    <string name="nan" translatable="false">NaN</string>
+    <string name="unknown">Unknown</string>
 
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">16sp</item>

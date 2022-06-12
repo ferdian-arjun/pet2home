@@ -32,8 +32,8 @@ fun Float.convertMeterToKilometer(): Float {
 
 fun checkDistance(myLat: Double?, myLon: Double?, lat: String, lon: String): Float {
     val results = FloatArray(1)
-    val getLatPost = if(lat.isNullOrEmpty()) myLat else lat.trim().toDouble()
-    val getLonPost = if(lon.isNullOrEmpty()) myLon else lon.trim().toDouble()
+    val getLatPost = if(lat.isEmpty()) myLat else lat.trim().toDouble()
+    val getLonPost = if(lon.isEmpty()) myLon else lon.trim().toDouble()
     Location.distanceBetween(myLat!!,myLon!!,getLatPost!!,getLonPost!!, results)
     return results[0]
 }

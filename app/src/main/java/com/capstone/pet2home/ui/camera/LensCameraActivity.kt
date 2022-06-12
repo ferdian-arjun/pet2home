@@ -100,11 +100,11 @@ class LensCameraActivity : AppCompatActivity() {
                     startActivity(intent)
 
                     val savedUri = Uri.fromFile(photoFile)
-                    Toast.makeText(
-                        this@LensCameraActivity,
-                        "Photo Saved $savedUri",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        this@LensCameraActivity,
+//                        "Photo Saved $savedUri",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                 }
             }
         )

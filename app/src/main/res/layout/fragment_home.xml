@@ -107,6 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         app:iss_auto_cycle="true"
+                        app:iss_placeholder="@drawable/ic_gallery"
                         app:iss_delay="0"
                         app:iss_period="1000"
                         app:layout_constraintEnd_toEndOf="parent"

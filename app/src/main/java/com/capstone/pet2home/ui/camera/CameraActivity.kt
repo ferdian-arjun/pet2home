@@ -104,12 +104,12 @@ class CameraActivity : AppCompatActivity() {
                     )
                     setResult(EditProfileActivity.CAMERA_X_RESULT, intent)
                     finish()
-
-                    Toast.makeText(
-                        this@CameraActivity,
-                        "Berhasil mengambil gambar.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+//
+//                    Toast.makeText(
+//                        this@CameraActivity,
+//                        "Berhasil mengambil gambar.",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
                 }
             }
         )
