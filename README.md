@@ -23,7 +23,7 @@ This app is able to identify 5 breed of dog and 5 breed of cat and determine its
 |   Learning Paths   |                                Link                                |
 | :----------------: | :----------------------------------------------------------------: |
 | Mobile Development | [Github](https://github.com/ferddev21/pet2home) |
-|  Cloud Computing  | [Github](https://github.com/dimas212bayu/CC-Capstone-Bangkit)  |
+|  Cloud Computing  | [Github](https://github.com/dindafathihah/cc-pet2home)  |
 |   Machine Learning  | [Github](https://github.com/Adamaristama/bangkitpet2home)  |
 
 
