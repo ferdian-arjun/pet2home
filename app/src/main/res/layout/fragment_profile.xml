@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/windowBackground"
+                android:paddingBottom="12dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <ImageView
+                            android:id="@+id/image_user_avatar"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            android:layout_marginTop="18dp"
+                            android:background="@drawable/ic_account_circle"
+                            android:contentDescription="@string/user_avatar"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/text_user_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="@string/user_email"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="@+id/image_user_avatar"
+                            app:layout_constraintStart_toStartOf="@+id/image_user_avatar"
+                            app:layout_constraintTop_toBottomOf="@+id/image_user_avatar" />
+
+                        <TextView
+                            android:id="@+id/text_user_fullName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_fullName"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:textStyle="bold"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="@+id/text_user_email"
+                            app:layout_constraintStart_toStartOf="@+id/text_user_email"
+                            app:layout_constraintTop_toBottomOf="@+id/text_user_email" />
+
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="1dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="12dp"
+                            android:background="?android:attr/listDivider"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="@+id/text_user_fullName"
+                            app:layout_constraintStart_toStartOf="@+id/text_user_fullName"
+                            app:layout_constraintTop_toBottomOf="@+id/text_user_fullName" />
+
+                        <TextView
+                            android:id="@+id/text_posting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/text_posting"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:textStyle="bold"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toStartOf="@+id/divider"
+                            app:layout_constraintTop_toTopOf="@+id/divider" />
+
+                        <TextView
+                            android:id="@+id/text_user_post"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_number"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="@+id/text_posting"
+                            app:layout_constraintStart_toStartOf="@+id/text_posting"
+                            app:layout_constraintTop_toBottomOf="@+id/text_posting" />
+
+                        <TextView
+                            android:id="@+id/text_favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/text_favorite"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:textStyle="bold"
+                            android:visibility="invisible"
+                            app:layout_constraintStart_toStartOf="@+id/divider"
+                            app:layout_constraintTop_toTopOf="@+id/divider" />
+
+                        <TextView
+                            android:id="@+id/text_user_favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_number"
+                            android:textAppearance="@style/TextAppearance.App.Headline5"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="@+id/text_favorite"
+                            app:layout_constraintStart_toStartOf="@+id/text_favorite"
+                            app:layout_constraintTop_toBottomOf="@+id/text_favorite" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:background="?android:attr/windowBackground"
+                app:tabSelectedTextColor="?attr/colorPrimary"
+                app:tabTextColor="@color/text_shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="2dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_create_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:contentDescription="@string/default_text"
+        app:tint="@android:color/white"
+        android:focusable="true"
+        android:src="@drawable/ic_add_24" />
+
+</RelativeLayout>

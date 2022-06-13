@@ -1,3 +1,128 @@
 <resources>
     <string name="app_name">pet2home</string>
+    <string name="login">Sign in</string>
+    <string name="email_warning">Please input a proper email</string>
+    <string name="password_warning">Password must have at least 6 characters</string>
+    <string name="name_warning">Name can\'t be empty</string>
+    <string name="input_email">Input your email..</string>
+    <string name="input_password">Input your password..</string>
+    <string name="input_name">Input your name..</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="register">Sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_lens">Scan</string>
+    <string name="title_profile">My Profile</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="user_avatar" translatable="false">user_avatar</string>
+    <string name="user_email" translatable="false">user@mail.com</string>
+    <string name="user_fullName" translatable="false">Full Name</string>
+    <string name="text_posting" translatable="false">Posting</string>
+    <string name="default_number" translatable="false">0</string>
+    <string name="default_text" translatable="false">-</string>
+    <string name="lorem" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="tab_text_post" translatable="false">Post</string>
+    <string name="tab_text_favorite">Favorite</string>
+    <string name="text_post_title">Title</string>
+    <string name="text_post_location">Location</string>
+    <string name="share_profile">Share profile</string>
+    <string name="settings_profile">Settings profile</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_change_password">Change Password</string>
+    <string name="text_change_language">Change Language</string>
+    <string name="text_logout">Logout</string>
+    <string name="title_menu_1">Adoption Information</string>
+    <string name="desc_menu_1">Looking for various information about animals available for adoption</string>
+    <string name="title_menu_2">Animal identification</string>
+    <string name="title_menu_3">More Information.</string>
+    <string name="desc_menu_2">Identify your animal to find out the type of race that exists in your animal</string>
+    <string name="desc_menu_3">Come join us and choose a pet that you will keep</string>
+    <string name="menu1" translatable="false">Menu</string>
+    <string name="menu2" translatable="false">Menu2</string>
+    <string name="menu3" translatable="false">Menu3</string>
+    <string name="iconpet2home" translatable="false">IconPet2Home</string>
+
+    <string name="capturimage" translatable="false">capturImage</string>
+    <string name="switchcamera">SwitchCamera</string>
+
+
+    <string name="text_change_photo">Change Image</string>
+    <string name="title_post_add">Create Post</string>
+    <string name="title_post_edit">Edit Post</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="choose">Choose an image</string>
+
+    <string name="posting">Posting</string>
+    <string name="name_pet">Animal Name</string>
+    <string name="animal_type">Animal Type</string>
+    <string name="no_whatsapp">Whatsapp Number</string>
+    <string name="description">Description</string>
+
+    <string name="search_post">Search Post</string>
+    <string name="text_dog">Dog</string>
+    <string name="text_cat">Cat</string>
+    <string name="text_around_you">Around you</string>
+    <string name="text_search">Search</string>
+    <string name="language">Change Language</string>
+    <string name="content_fav">content fav</string>
+    <string name="text_type_label">Type</string>
+    <string name="text_age_label">Age</string>
+    <string name="text_sex_label">Gender</string>
+    <string name="tv_about_label">About</string>
+    <string name="age">Age</string>
+    <string name="instagram">Instagram</string>
+    <string name="location">Location</string>
+    <string name="update_post">Update Post</string>
+    <string name="text_full_name">Full Name</string>
+    <string name="text_telp">Telp</string>
+    <string name="text_email">Email</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_date">Date</string>
+    <string name="text_update_password">Update password</string>
+    <string name="text_new_password">New Password</string>
+    <string name="text_old_password">Old Password</string>
+    <string name="text_add_photo">Add Image</string>
+    <string name="title_change_language">Select Language</string>
+    <string name="text_indonesian" translatable="false">Bahasa Indonesia</string>
+    <string name="text_english" translatable="false">English</string>
+    <string name="text_update_profile">Update Profile</string>
+    <string name="failed_login" translatable="false">Failed Login</string>
+    <string name="failed_register" translatable="false">Failed Register</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="login_to_your_account">Login to your account</string>
+    <string name="success" translatable="false">Success</string>
+    <string name="success_logout" translatable="false">Success Logout</string>
+    <string name="failed" translatable="false">Ops</string>
+    <string name="man" translatable="false">Man</string>
+    <string name="woman" translatable="false">Woman</string>
+    <string name="title_post" translatable="false">Title Post</string>
+    <string name="title_breed" translatable="false">Title breed</string>
+    <string name="title_date" translatable="false">title date</string>
+    <string name="text_edit" translatable="false">Edit</string>
+    <string name="text_delete">Delete</string>
+    <string name="successfully_deleted" translatable="false">Successfully deleted</string>
+    <string name="successfull_update" translatable="false">Post successfully updates</string>
+    <string name="unknown_location">Unknown Location</string>
+    <string name="text_no_content_post">Post your pet for adoption</string>
+    <string name="text_no_content_fav">You don\'t have a favorite post</string>
+    <string name="text_distance" translatable="false"><![CDATA[< 5.0 km]]></string>
+    <string name="textResult">Based on the scan results, the type of race your animal has is</string>
+    <string name="your_result">Your Result :</string>
+    <string name="persentase" translatable="false">Persentase</string>
+    <string name="check_now">Check now</string>
+    <string name="nan" translatable="false">NaN</string>
+    <string name="unknown">Unknown</string>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
+
+

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pet2home</string>
+    <string name="login">Masuk</string>
+    <string name="email_warning">Tolong Masukkan Email dengan benar</string>
+    <string name="password_warning">Password harus mengandung 6 karakter</string>
+    <string name="name_warning">Nama tidak bolek kosong</string>
+    <string name="input_email">Masukkan Email…</string>
+    <string name="input_password">Masukkan Password…</string>
+    <string name="input_name">Masukkan nama kamu…</string>
+    <string name="don_t_have_an_account">Tidak punya akun?</string>
+    <string name="register">Daftar</string>
+    <string name="already_have_an_account">Sudah mempunyai akun?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_lens">Scan</string>
+    <string name="title_settings">Pengaturan</string>
+    <string name="title_edit_profile">Edit Profil Saya</string>
+    <string name="title_change_password">Ganti Kata Sandi</string>
+    <string name="text_favorite">Favorit</string>
+    <string name="tab_text_favorite">Favorit</string>
+    <string name="text_post_title">Judul</string>
+    <string name="text_post_location">Lokasi</string>
+    <string name="share_profile">Bagikan Profile</string>
+    <string name="settings_profile">Pengaturan Profile</string>
+    <string name="text_edit_profile">Edit Profil Saya</string>
+    <string name="text_change_password">Ubah Kata Sandi</string>
+    <string name="text_change_language">Ubah Bahasa</string>
+    <string name="text_logout">Keluar</string>
+    <string name="title_menu_1">Informasi Adopsi</string>
+    <string name="desc_menu_1">Mencari berbagai informasi mengenai hewan yang available untuk diadopsi</string>
+    <string name="title_menu_2">Identiffikasi hewan</string>
+    <string name="title_menu_3">Informasi Lainnya.</string>
+    <string name="desc_menu_2">Identifikasi hewan kalian untuk mengetahui jenis ras yang ada pada hewanmu</string>
+    <string name="desc_menu_3">Ayo Bergabung bersama kami dan pilihlah hewan pelihahraan yang akan kalian pelihara</string>
+
+    <string name="switchcamera">GantiKamera</string>
+
+
+    <string name="text_change_photo">Ganti Gambar</string>
+    <string name="title_post_add">Buat Postingan</string>
+    <string name="title_post_edit">Edit Postingan</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="choose">Pilih Gambar</string>
+
+    <string name="posting">Posting</string>
+    <string name="name_pet">Nama Hewan</string>
+    <string name="animal_type">Jenis Hewan</string>
+    <string name="no_whatsapp">Nomer WhatsApp</string>
+    <string name="description">Deskripsi</string>
+
+    <string name="search_post">Cari</string>
+    <string name="text_dog">Anjing</string>
+    <string name="text_cat">Kucing</string>
+    <string name="text_around_you">Di Sekitar Kamu</string>
+    <string name="text_search">Cari</string>
+
+    <string name="language">Ganti Bahasa</string>
+    <string name="content_fav">content fav</string>
+    <string name="age">Usia</string>
+    <string name="instagram">Instagram</string>
+    <string name="location">Lokasi</string>
+    <string name="update_post">Update Post</string>
+    <string name="text_type_label">Tipe</string>
+    <string name="text_age_label">Umur</string>
+    <string name="text_sex_label">Jenis Kelamin</string>
+    <string name="tv_about_label">Tentang</string>
+    <string name="text_full_name">Nama Lengkap</string>
+    <string name="text_telp">Nomor Telp</string>
+    <string name="text_email">Email</string>
+    <string name="text_gender">Jenis Kelamin</string>
+    <string name="text_date">Tanggal Lahir</string>
+    <string name="text_new_password">Kata Sandi Baru</string>
+    <string name="text_old_password">Kata Sandi Lama</string>
+    <string name="text_add_photo">Tambah Gambar</string>
+    <string name="title_change_language">Pilih Bahasa</string>
+    <string name="title_profile">Profil Saya</string>
+    <string name="text_update_password">Perbarui Kata Sandi</string>
+    <string name="text_update_profile">Perbarui Profil</string>
+    <string name="create_your_account">Buat akun kamu</string>
+    <string name="login_to_your_account">Masuk dengan  akun kamu</string>
+    <string name="text_delete">Hapus</string>
+    <string name="unknown_location" translatable="false">Tidak Ada Lokasi</string>
+    <string name="text_no_content_post">Posting hewan peliharaan Anda untuk diadopsi</string>
+    <string name="text_no_content_fav">Kamu tidak memiliki postingan favorit</string>
+    <string name="textResult">Berdasarkan hasil scan jenis Ras yang dimiliki oleh hewan kamu adalah</string>
+    <string name="your_result">Hasil :</string>
+    <string name="check_now">Cek Sekarang</string>
+    <string name="unknown">Tidak Diketahui</string>
+
+</resources>

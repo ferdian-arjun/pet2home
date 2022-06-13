@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    android:layout_gravity="center"
+    card_view:cardElevation="2dp"
+    android:layout_marginHorizontal="10dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardUseCompatPadding="true"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <View
+            android:id="@+id/btn_menu_option"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_more_horizon"
+            android:backgroundTint="@color/black_text"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_username_post"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_username_post" />
+
+        <ImageView
+            android:id="@+id/iv_avatar_post"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/ic_account_circle"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_username_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/user_fullName"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.App.Headline6"
+            card_view:layout_constraintBottom_toBottomOf="@+id/iv_avatar_post"
+            card_view:layout_constraintStart_toEndOf="@+id/iv_avatar_post"
+            card_view:layout_constraintTop_toTopOf="@+id/iv_avatar_post"
+            card_view:layout_constraintVertical_bias="0.5" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="8dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/iv_avatar_post">
+
+            <ImageView
+                android:id="@+id/img_item_photo_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/default_text"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/tv_title_post"
+            style="@style/TextAppearance.App.Headline4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/lorem"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cv_images" />
+
+        <TextView
+            android:id="@+id/tv_description_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/lorem"
+            android:textColor="@color/black_text"
+            android:textSize="16sp"
+            card_view:drawableTint="@color/black_text"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_title_post"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_title_post" />
+
+        <TextView
+            android:id="@+id/tv_create_time_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_description_post"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_description_post"
+            tools:text="Created time" />
+
+        <View
+            android:id="@+id/btn_favorite"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_favorite_border_dark"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_title_post"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_title_post" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="gone"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_create_time_post" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
